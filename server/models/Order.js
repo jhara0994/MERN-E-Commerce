@@ -14,11 +14,11 @@ const orderSchema = new Schema({
     }
   ],
   sellerId: {
-    type: INT,
+    type: Number,
     required: true,
   },
   buyerId: {
-    type: INT,
+    type: Number,
     required: true,
   }
 });
