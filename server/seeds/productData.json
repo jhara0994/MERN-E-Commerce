@@ -1,35 +1,68 @@
 [
     {
-      "title": "Mona Lisa"
+      "title": "Mona Lisa",
+      "description": "Mona Lisa",
+      "price": 15000000,
+      "category": "Renaissance"
     },
     {
-      "title": "The Starry Night"
+      "title": "The Starry Night",
+      "description": "Vincent Van Gogh",
+      "price": 900000,
+      "category": "Post-Impressionism"
     },
     {
-      "title": "American Gothic"
+      "title": "American Gothic",
+      "description": "Grant Wood",
+      "price": 12000000,
+      "category": "Modernism"
     },
     {
-      "title": "The Persistence of Memory"
+      "title": "The Persistence of Memory",
+      "description": "Salvador Dali",
+      "price": 12000000,
+      "category": "Surrealism"
     },
     {
-      "title": "The Tower of Babel"
+      "title": "The Tower of Babel",
+      "description": "Pieter Bruegel the Elder",
+      "price": 13000000,
+      "category": "Baroque"
     },
     {
-      "title": "The Musicians"
+      "title": "The Musicians",
+      "description": "Michelangelo Merisi da Caravaggio",
+      "price": 17500000,
+      "category": "Renaissance"
     },
     {
-      "title": "Vitruvian Man"
+      "title": "Vitruvian Man",
+      "description": "Da Vinci",
+      "price": 12500000,
+      "category": "Renaissance"
     },
     {
-      "title": "Irises"
+      "title": "Irises",
+      "description": "Vincent Van Gogh",
+      "price": 12500000,
+      "category": "Post-Impressionism"
     },
     {
-      "title": "Paris Street; Rainy Day"
+      "title": "Paris Street; Rainy Day",
+      "description": "Gustave Caillebotte",
+      "price": 12500000,
+      "category": "Impressionism"
     },
     {
-      "title": "Portrait of Madame X"
+      "title": "Portrait of Madame X",
+      "description": "John Singer Sargent",
+      "price": 14500000,
+      "category": "Realism"
     },
     {
-      "title": "The Night Cafe"
+      "title": "The Night Cafe",
+      "description": "Vincent Van Gogh",
+      "price": 13500000,
+      "category": "Post-Impressionism"
     }
   ]
