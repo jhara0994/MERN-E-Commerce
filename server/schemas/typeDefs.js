@@ -24,6 +24,6 @@ const typeDefs = gql`
       price: Number
       category: {Category}
   }
+  `;
 
-  
-  `
+  module.exports = typeDefs;
