@@ -115,10 +115,22 @@ const resolvers = {
   
         throw new AuthenticationError('Not logged in');
       },
-      updateProduct: async (parent, { _id, quantity }) => {
-        const decrement = Math.abs(quantity) * -1;
-  
-        return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+      addProduct: async (parent, args, context) => {
+        if(context.user) {
+          const newProduct = await Product.create({ ...args })
+          await User.findByIdAndUpdate(context.user._id, {$addToSet: {'catalog':newProduct._id}})
+          return newProduct
+        } else {
+          return console.log('No User context Found')
+        }
+      },
+      updateProduct: async (parent, { _id, args }) => {
+
+        if(args) {
+          return await Product.findByIdAndUpdate(_id, { ...args });
+        } else {
+          return console.log('Product has not been updated!')
+        }
       },
       login: async (parent, { email, password }) => {
         const user = await User.findOne({ email });

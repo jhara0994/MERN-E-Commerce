@@ -25,8 +25,15 @@ const userSchema = new Schema({
   avatarUrl: {
     type: String,
   },
-  orders: [Order.schema],
-  catalog: [Product.schema]
+  orders: {
+    type: Schema.Types.ObjectId,
+    ref: 'Order'
+  },
+  catalog: [
+    {
+      type: Schema.Types.ObjectId, 
+      ref: 'Product'
+    }]
 });
 
 // set up pre-save middleware to create password
