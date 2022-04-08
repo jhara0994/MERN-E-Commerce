@@ -31,13 +31,13 @@ function ProductItem(item) {
 
   return (
     <div className="card px-1 py-1">
-      <Link to={`/products/${_id}`}>
+      {/* <Link to={`/products/${_id}`}>
         <img
           alt={title}
           src={`/images/${image}`}
         />
         <p>{title}</p>
-      </Link>
+      </Link> */}
       <div>
         <div>{quantity} {pluralize("item", quantity)} in stock</div>
         <span>{price}</span>
