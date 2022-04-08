@@ -5,6 +5,7 @@ import { StoreProvider } from './utils/GlobalState';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.js';
 import Home from './pages/Home/Home.js'
+import ImageUpload from './components/ImageUpload/ImageUpload';
 
 //Must change URI in production
 const client = new ApolloClient({

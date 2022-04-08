@@ -31,15 +31,24 @@ function ProductItem(item) {
 
   return (
     <div className="card px-1 py-1">
+<<<<<<< HEAD
       {/* <Router>
       <Link to={`/products/${_id}`}> */}
         <h3>{title}Header</h3>
+=======
+      {/* <Link to={`/products/${_id}`}>
+>>>>>>> main
         <img
           alt={title}
           src={`/images/${image}`}
         />
+<<<<<<< HEAD
       {/* </Link>
       </Router> */}
+=======
+        <p>{title}</p>
+      </Link> */}
+>>>>>>> main
       <div>
         <div>1 item in stock</div>
         <span>{price}</span>
