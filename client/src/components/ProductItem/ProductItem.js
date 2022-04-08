@@ -12,8 +12,7 @@ function ProductItem(item) {
     image,
     title,
     _id,
-    price,
-    quantity
+    price
   } = item;
 
   const { cart } = state
@@ -31,24 +30,13 @@ function ProductItem(item) {
 
   return (
     <div className="card px-1 py-1">
-<<<<<<< HEAD
-      {/* <Router>
-      <Link to={`/products/${_id}`}> */}
-        <h3>{title}Header</h3>
-=======
-      {/* <Link to={`/products/${_id}`}>
->>>>>>> main
+      {/* <Link to={{_id}}> */}
+        <h3>{title} Header</h3>
         <img
           alt={title}
           src={`/images/${image}`}
         />
-<<<<<<< HEAD
-      {/* </Link>
-      </Router> */}
-=======
-        <p>{title}</p>
-      </Link> */}
->>>>>>> main
+      {/* </Link> */}
       <div>
         <div>1 item in stock</div>
         <span>{price}</span>

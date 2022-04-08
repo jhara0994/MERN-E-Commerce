@@ -29,7 +29,7 @@ function ProductList() {
       });
     } 
     getProductData()
-  }, [state, dispatch]);
+  }, [dispatch]);
 
 
   function filterProducts() {
