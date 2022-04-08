@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import {motion} from 'framer-motion';
 import Auth from '../../utils/auth';
 import { Nav, Modal, Tab } from 'react-bootstrap';
-import SignUpForm from './SignupForm';
-import LoginForm from './LoginForm';
+import SignUpForm from '../SignupForm/SignupForm';
+import LoginForm from '../LoginForm/LoginForm';
 
 
 const Navlinks = (props) => {

@@ -4,7 +4,7 @@ import Auth from '../../utils/auth.js'
 
 
 
-const ImageUpload = () => {
+const ImageUpload = (props) => {
     const token = Auth.getToken();
 
     const [image, setImage] = useState();
@@ -17,7 +17,7 @@ const ImageUpload = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('file', e.target.previousElementSibling.files[0]);
+        formData.append('file', e.target.previousElementSibling.children[0].files[0]);
 
         const options = {
             method: 'POST',
@@ -31,11 +31,22 @@ const ImageUpload = () => {
 
     return (
         <>
-        <form className={classes.Form} onChange={handleImage}>
-        <input type='file' name='image' />
-        <button onClick={handleSubmit} disabled={!image || !token}> Submit Photo </button>
-        </form>
-        </>
+        {props.display && <div className={classes.Container}>
+        <div className={classes.Card}>
+            <h2>Upload profile picture</h2>
+            <form className={classes.Form} onChange={handleImage}>
+                <label className={classes.ImageUpload}>
+                 <input type='file' name='image' />
+                 Select Photo   
+                </label>
+                
+                <button onClick={handleSubmit} disabled={!image || !token}> Submit Photo </button>
+            </form>
+        </div>
+      </div>}
+      </> 
+        
+        
     )
 }
 

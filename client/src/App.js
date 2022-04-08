@@ -15,7 +15,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Navbar />
-      <ImageUpload />
     </ApolloProvider>
   );
 }
