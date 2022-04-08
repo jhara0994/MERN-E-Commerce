@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.js';
+import ImageUpload from './components/ImageUpload/ImageUpload';
 
 //Must change URI in production
 const client = new ApolloClient({
@@ -14,6 +15,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Navbar />
+      <ImageUpload />
     </ApolloProvider>
   );
 }
