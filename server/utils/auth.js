@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+const decode = require('jwt-decode');
 const secret = 'mysecretssshhhhhhh';
 const expiration = '2h';
 
@@ -28,4 +28,7 @@ module.exports = {
     const payload = { email, username, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
+  getProfile(token) {
+    return decode(token);
+  }
 };

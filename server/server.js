@@ -7,7 +7,8 @@ const db = require('./config/connection');
 var fs = require('fs');
 var busboy = require('connect-busboy');
 const {User} = require('./models');
-const Auth = require('./utils/AuthService');
+const Auth = require('./utils/auth.js')
+
 
 const cloudinary = require('cloudinary').v2;
 console.log(cloudinary.config().cloud_name);
@@ -36,9 +37,13 @@ app.get('/', (req, res) => {
 
 app.post('/api/images',function(req, res) {
   var fstream;
+  
+  const token = req.headers.authorization.split(' ').pop().trim();
+  const {data} = Auth.getProfile(token);
+  const {_id: userId} = data
   req.pipe(req.busboy);
   req.busboy.on('file', function (fieldname, file, filename) {
-      console.log("Uploading: " + filename); 
+      console.log("Uploading photo"); 
      
       fstream = fs.createWriteStream(__dirname + '/images/' + filename);
       file.pipe(fstream);
@@ -47,20 +52,14 @@ app.post('/api/images',function(req, res) {
           fs.unlink(__dirname + '/images/' + filename, (err) => {
             if (err) throw err;
           })
-          console.log(Auth.getProfile())
-          const profile = Auth.getProfile();
+          
         
-         // await User.findByIdAndUpdate(profile._id,{avatarUrl: res.url})
+         await User.findByIdAndUpdate(userId,{avatarUrl: res.url})
           
         })
           res.redirect('back');
       });
   });
-});
-
-app.post('/api/images', (req,res) => {
-  console.log(req.file);
-
 });
 
 

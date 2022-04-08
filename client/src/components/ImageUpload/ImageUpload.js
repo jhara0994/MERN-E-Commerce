@@ -1,21 +1,39 @@
 import { useState } from 'react';
 import classes from './ImageUpload.module.css';
+import Auth from '../../utils/auth.js'
 
 
 
 const ImageUpload = () => {
+    const token = Auth.getToken();
+
     const [image, setImage] = useState();
 
     const handleImage = (e) =>{
-        const {value} = e.target
-        setImage(value)
+        const {files} = e.target
+        setImage(files[0])
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('file', e.target.previousElementSibling.files[0]);
+
+        const options = {
+            method: 'POST',
+            body: formData,
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        };
+        fetch('/api/images', options)
     }
 
     return (
         <>
-        <form className={classes.Form} action='/api/images' method="post" encType="multipart/form-data" onChange={handleImage}>
+        <form className={classes.Form} onChange={handleImage}>
         <input type='file' name='image' />
-        <button type='submit' disabled={!image}> Submit Photo </button>
+        <button onClick={handleSubmit} disabled={!image || !token}> Submit Photo </button>
         </form>
         </>
     )
