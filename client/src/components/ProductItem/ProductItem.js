@@ -11,6 +11,7 @@ function ProductItem(item) {
   const {
     image,
     title,
+    description,
     _id,
     price
   } = item;
@@ -31,11 +32,12 @@ function ProductItem(item) {
   return (
     <div className="card px-1 py-1">
       {/* <Link to={{_id}}> */}
-        <h3>{title} Header</h3>
+        <h3>{title}</h3>
         <img
           alt={title}
           src={`/images/${image}`}
         />
+        <p>{description}</p>
       {/* </Link> */}
       <div>
         <div>1 item in stock</div>
