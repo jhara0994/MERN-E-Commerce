@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Router } from "react-router-dom";
 import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART } from "../../utils/actions";
@@ -31,15 +31,17 @@ function ProductItem(item) {
 
   return (
     <div className="card px-1 py-1">
-      <Link to={`/products/${_id}`}>
+      {/* <Router>
+      <Link to={`/products/${_id}`}> */}
+        <h3>{title}Header</h3>
         <img
           alt={title}
           src={`/images/${image}`}
         />
-        <p>{title}</p>
-      </Link>
+      {/* </Link>
+      </Router> */}
       <div>
-        <div>{quantity} {pluralize("item", quantity)} in stock</div>
+        <div>1 item in stock</div>
         <span>{price}</span>
       </div>
       <button onClick={addToCart}>Add to cart</button>
