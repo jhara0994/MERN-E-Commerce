@@ -1,0 +1,33 @@
+[
+    {
+      "username": "Shaq",
+      "email": "shaq@gmail.com",
+      "password": "shaq01",
+      "avatarUrl": ""
+    },
+    {
+      "username": "Jrod",
+      "email": "jrod@gmail.com",
+      "password": "jrod29"
+    },
+    {
+      "username": "Chilo",
+      "email": "chilo@gmail.com",
+      "password": "chilo12"
+    },
+    {
+      "username": "Aubrey",
+      "email": "aubrey@gmail.com",
+      "password": "acrook18"
+    },
+    {
+      "username": "RenFestArt",
+      "email": "renfest@yahoo.com",
+      "password": "renfest01"
+    },
+    {
+      "username": "MyStore",
+      "email": "myStore@hotmail.com",
+      "password": "pass123"
+    }
+  ]
