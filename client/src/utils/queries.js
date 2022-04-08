@@ -1,19 +1,30 @@
 import { gql } from '@apollo/client';
 
+// export const QUERY_PRODUCTS = gql`
+//   query getProducts($category: ID) {
+//     products(category: $category) {
+//       _id
+//       title
+//       description
+//       image
+//       price
+//       category {
+//         _id
+//       }
+//     }
+//   }
+// `;
+
 export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
-      _id
-      title
-      description
-      image
-      price
-      category {
-        _id
-      }
-    }
+query Products {
+  products {
+    _id
+    title
+    description
+    image
+    price
   }
-`;
+}`;
 
 export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ID]!) {

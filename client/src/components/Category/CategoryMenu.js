@@ -17,20 +17,20 @@ function CategoryMenu() {
   
   useEffect(() => {
     const getCategoryData = async() => {
-    const { data } = await queryCategories()
-    console.log(data.categories) 
+      const { data } = await queryCategories()
+      console.log(data.categories) 
 
-    data.categories.forEach((category) => {
+      data.categories.forEach((category) => {
         idbPromise('categories', 'put', category);
       });
 
-    if (data.categories) {
-      dispatch({
-        type: UPDATE_CATEGORIES,
-        categories: data.categories,
-      });
+      if (data.categories) {
+        dispatch({
+          type: UPDATE_CATEGORIES,
+          categories: data.categories,
+        });
+      }
     }
-  }
   
     getCategoryData()
   }, [state, dispatch]);

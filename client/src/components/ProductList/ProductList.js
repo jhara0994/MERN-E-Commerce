@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ProductItem from '../ProductItem/ProductItem';
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
-import { useQuery } from '@apollo/client';
+import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import spinner from '../../assets/spinner.gif';
@@ -12,26 +12,26 @@ function ProductList() {
 
   const { currentCategory } = state;
 
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const [ queryProducts ] = useLazyQuery(QUERY_PRODUCTS);
 
   useEffect(() => {
-    if (data) {
-      dispatch({
-        type: UPDATE_PRODUCTS,
-        products: data.products,
-      });
+    const getProductData = async() => {
+      const  { data } = await queryProducts()
+      console.log(data.products)
+
+      if (data.products) {
+        dispatch({
+          type: UPDATE_PRODUCTS,
+          products: data.products,
+        });  
+      }
       data.products.forEach((product) => {
         idbPromise('products', 'put', product);
       });
-    } else if (!loading) {
-      idbPromise('products', 'get').then((products) => {
-        dispatch({
-          type: UPDATE_PRODUCTS,
-          products: products,
-        });
-      });
-    }
-  }, [data, loading, dispatch]);
+    } 
+    getProductData()
+  }, [state, dispatch]);
+
 
   function filterProducts() {
     if (!currentCategory) {
@@ -48,20 +48,19 @@ function ProductList() {
       <h2>Our Products:</h2>
       {state.products.length ? (
         <div className="flex-row">
-          {filterProducts().map((product) => (
+          {filterProducts().map((products) => (
             <ProductItem
-              key={product._id}
-              _id={product._id}
-              image={product.image}
-              title={product.name}
-              price={product.price}
+              key={products._id}
+              _id={products._id}
+              image={products.image}
+              title={products.name}
+              price={products.price}
             />
           ))}
         </div>
       ) : (
         <h3>You haven't added any products yet!</h3>
       )}
-      {loading ? <img src={spinner} alt="loading" /> : null}
     </div>
   );
 }
