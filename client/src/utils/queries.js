@@ -24,7 +24,7 @@ export const QUERY_CHECKOUT = gql`
 `;
 
 export const QUERY_ALL_PRODUCTS = gql`
-  {
+query Query {
     products {
       _id
       title
@@ -39,16 +39,16 @@ export const QUERY_ALL_PRODUCTS = gql`
 `;
 
 export const QUERY_CATEGORIES = gql`
-  {
-    categories {
-      _id
-      name
-    }
+query Query {
+  categories {
+    _id
+    name
   }
+}
   `
 
   export const QUERY_USER = gql`
-  {
+  query Query {
     user {
       username
       email

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
+import { useQuery, useLazyQuery } from '@apollo/client';
 import { useStoreContext } from '../../utils/GlobalState';
 import {
   UPDATE_CATEGORIES,
@@ -9,30 +9,31 @@ import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
 function CategoryMenu() {
-  const [state, dispatch] = useStoreContext();
+  const [state, dispatch] = useStoreContext()
 
-  const { categories } = state;
+  // const { categories } = state;
 
-  const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
-
+  const  [ queryCategories ] = useLazyQuery(QUERY_CATEGORIES); 
+  
   useEffect(() => {
-    if (categoryData) {
-      dispatch({
-        type: UPDATE_CATEGORIES,
-        categories: categoryData.categories,
-      });
-      categoryData.categories.forEach((category) => {
+    const getCategoryData = async() => {
+    const { data } = await queryCategories()
+    console.log(data.categories) 
+
+    data.categories.forEach((category) => {
         idbPromise('categories', 'put', category);
       });
-    } else if (!loading) {
-      idbPromise('categories', 'get').then((categories) => {
-        dispatch({
-          type: UPDATE_CATEGORIES,
-          categories: categories,
-        });
+
+    if (data.categories) {
+      dispatch({
+        type: UPDATE_CATEGORIES,
+        categories: data.categories,
       });
     }
-  }, [categoryData, loading, dispatch]);
+  }
+  
+    getCategoryData()
+  }, [state, dispatch]);
 
   const handleClick = (id) => {
     dispatch({
@@ -41,10 +42,12 @@ function CategoryMenu() {
     });
   };
 
+
+
   return (
     <div>
       <h2>Choose a Category:</h2>
-      {categories.map((item) => (
+      {state.categories.map((item) => (
         <button
           key={item._id}
           onClick={() => {
