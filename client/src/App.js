@@ -5,6 +5,9 @@ import { StoreProvider } from './utils/GlobalState';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.js';
 import Home from './pages/Home/Home.js'
+import {Header} from "./components/Header/index.js"
+import {Footer} from "./components/Footer/index.js"
+
 import ImageUpload from './components/ImageUpload/ImageUpload';
 
 //Must change URI in production
@@ -15,10 +18,12 @@ const client = new ApolloClient({
 
 function App() {
   return (
+  
     <ApolloProvider client={client}>
       <StoreProvider>
-        <Navbar />
+        <Header />
         <Home />
+        <Footer/>
       </StoreProvider>
     </ApolloProvider>
   );
