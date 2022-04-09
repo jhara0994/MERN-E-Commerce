@@ -21,8 +21,9 @@ function App() {
   
     <ApolloProvider client={client}>
       <StoreProvider>
-        <Navbar />
+        <Header />
         <Home />
+        <Footer/>
       </StoreProvider>
     </ApolloProvider>
   );

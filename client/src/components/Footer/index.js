@@ -1,7 +1,7 @@
 export function Footer(props) {
     return (
         <footer>
-            Home
+          © 2022 MY ART                                
         </footer>
     )
 }
