@@ -5,6 +5,7 @@ import { StoreProvider } from './utils/GlobalState';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.js';
 import Home from './pages/Home/Home.js'
+import Header from './components/Header/Header'
 import ImageUpload from './components/ImageUpload/ImageUpload';
 
 //Must change URI in production
@@ -17,7 +18,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <StoreProvider>
-        <Navbar />
+        <Header />
         <Home />
       </StoreProvider>
     </ApolloProvider>
