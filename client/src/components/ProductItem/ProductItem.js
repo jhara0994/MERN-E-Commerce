@@ -20,7 +20,7 @@ function ProductItem(item) {
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-    if (itemInCart) {
+    if (!itemInCart) {
       dispatch({
         type: ADD_TO_CART,
         product: { ...item, purchaseQuantity: 1 }
@@ -31,7 +31,7 @@ function ProductItem(item) {
 
   return (
     <div className="card px-1 py-1">
-      {/* <Link to={{_id}}> */}
+      {/* <Link to='/products/:id' */}
         <h3>{title}</h3>
         <img
           alt={title}
