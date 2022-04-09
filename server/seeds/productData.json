@@ -2,67 +2,56 @@
     {
       "title": "Mona Lisa",
       "description": "Da Vinci",
-      "price": 15000000,
-      "category": "624ca9a2779dc3dc62b41521"
+      "price": 150000
     },
     {
       "title": "The Starry Night",
       "description": "Vincent Van Gogh",
-      "price": 900000,
-      "category": "624ca9a2779dc3dc62b41523"
+      "price": 90000
     },
     {
       "title": "American Gothic",
       "description": "Grant Wood",
-      "price": 12000000,
-      "category": "624ca9a2779dc3dc62b41524"
+      "price": 120000
     },
     {
       "title": "The Persistence of Memory",
       "description": "Salvador Dali",
-      "price": 12000000,
-      "category": "624ca9a2779dc3dc62b41525"
+      "price": 120000
     },
     {
       "title": "The Tower of Babel",
       "description": "Pieter Bruegel the Elder",
-      "price": 13000000,
-      "category": "624ca9a2779dc3dc62b41522"
+      "price": 130000
     },
     {
       "title": "The Musicians",
       "description": "Michelangelo Merisi da Caravaggio",
-      "price": 17500000,
-      "category": "624ca9a2779dc3dc62b41521"
+      "price": 175000
     },
     {
       "title": "Vitruvian Man",
       "description": "Da Vinci",
-      "price": 12500000,
-      "category": "624ca9a2779dc3dc62b41521"
+      "price": 125000
     },
     {
       "title": "Irises",
       "description": "Vincent Van Gogh",
-      "price": 12500000,
-      "category": "624ca9a2779dc3dc62b41523"
+      "price": 125000
     },
     {
       "title": "Paris Street; Rainy Day",
       "description": "Gustave Caillebotte",
-      "price": 12500000,
-      "category": "624ca9a2779dc3dc62b41526"
+      "price": 125000
     },
     {
       "title": "Portrait of Madame X",
       "description": "John Singer Sargent",
-      "price": 14500000,
-      "category": "624ca9a2779dc3dc62b41527"
+      "price": 145000
     },
     {
       "title": "The Night Cafe",
       "description": "Vincent Van Gogh",
-      "price": 13500000,
-      "category": "624ca9a2779dc3dc62b41523"
+      "price": 135000
     }
   ]
