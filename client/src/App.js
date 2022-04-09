@@ -1,6 +1,7 @@
 import React from 'react';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { StoreProvider } from './utils/GlobalState';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.js';
@@ -9,8 +10,28 @@ import Header from './components/Header/Header'
 import ImageUpload from './components/ImageUpload/ImageUpload';
 
 //Must change URI in production
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const setAuthorizationLink = setContext((request, previousContext) => ({
+  headers: {authorization: "1234"}
+}));
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  console.log(token)
+  console.log(headers)
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
 const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 

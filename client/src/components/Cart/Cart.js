@@ -8,13 +8,14 @@ import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe('pk_test_51KmgUqDldDOg1fdOIlY8yAXjCCYQUrlApkYUzSEsxJPIUw0mY9ENg8CwqQXpxTjsO7xBADXAB8MhL91b7X1tanmE00pJzJx7XN');
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   useEffect(() => {
+    console.log(data)
     if (data) {
       stripePromise.then((res) => {
         res.redirectToCheckout({ sessionId: data.checkout.session });
@@ -58,6 +59,7 @@ const Cart = () => {
       variables: { products: productIds },
     });
   }
+  
 
   if (!state.cartOpen) {
     return (
@@ -82,7 +84,7 @@ const Cart = () => {
           ))}
 
           <div className="flex-row space-between">
-            <strong>Total: ${calculateTotal()}</strong>
+            <strong>Total: {calculateTotal()}</strong>
 
             {Auth.loggedIn() ? (
               <button onClick={submitCheckout}>Checkout</button>
