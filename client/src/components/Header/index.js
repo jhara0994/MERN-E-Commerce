@@ -1,5 +1,5 @@
 import Navbar  from "./../Navbar/Navbar.js"
-export function Header(props) {
+export default function Header(props) {
     return (
         <header>
             <Navbar> </Navbar>

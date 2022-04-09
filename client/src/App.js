@@ -6,7 +6,8 @@ import { StoreProvider } from './utils/GlobalState';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.js';
 import Home from './pages/Home/Home.js'
-import Header from './components/Header/Header'
+import Header from './components/Header/index';
+import Footer from './components/Footer/index';
 import ImageUpload from './components/ImageUpload/ImageUpload';
 
 //Must change URI in production
@@ -14,9 +15,7 @@ const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
-const setAuthorizationLink = setContext((request, previousContext) => ({
-  headers: {authorization: "1234"}
-}));
+
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');

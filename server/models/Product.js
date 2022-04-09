@@ -23,7 +23,12 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Category',
     required: true
-  }
+  },
+  // sellerId:{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'User',
+  //   required: true
+  // }
 });
 
 const Product = mongoose.model('Product', productSchema);

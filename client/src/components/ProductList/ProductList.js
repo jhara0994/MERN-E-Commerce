@@ -16,7 +16,7 @@ function ProductList() {
   useEffect(() => {
     const getProductData = async() => {
       const  { data } = await queryProducts()
-      console.log(data.products)
+      
 
       if (data.products) {
         dispatch({
