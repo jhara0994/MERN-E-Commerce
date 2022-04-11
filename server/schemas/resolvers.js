@@ -26,6 +26,12 @@ const resolvers = {
       product: async (parent, { _id }) => {
         return await Product.findById(_id).populate('category');
       },
+
+      // search: async (parent, {_id }) => {
+      //   const { prodTitle } = req.query;
+      //   return await Product.find({$text: {$search: prodTitle}})
+      // },
+
       user: async (parent, args, context) => {
         if (context.user) {
           const user = await User.findById(context.user._id).populate({
