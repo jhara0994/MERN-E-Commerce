@@ -1,50 +1,62 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import {SearchIcon} from '@mui/material';
 // import {CloseIcon} from '@mui/material';
 
-// import { QUERY_PRODUCTS } from '../../utils/queries';
-// import { useStoreContext } from '../../utils/GlobalState';
-// import { useLazyQuery } from '@apollo/client';
+import { QUERY_PRODUCTS } from '../../utils/queries';
+import { useStoreContext } from '../../utils/GlobalState';
+import { useLazyQuery } from '@apollo/client';
 // import ProductItem from '../ProductItem/ProductItem';
-// import { SEARCH_BAR } from '../../utils/actions';
-// import { idbPromise } from '../../utils/helpers';
+import { SEARCH_BAR } from '../../utils/actions';
+import { idbPromise } from '../../utils/helpers';
 
-function SearchBar({item}) {
+function SearchBar({data}) {
+    const [state, dispatch] = useStoreContext();
+
     const [filteredData, setFilteredData] = useState([])
-    const [titleEntered, setTitleEntered] =useState("")
-    console.log(item)
-
-    const handleFilter = (e) => {
-        const searchTitle = e.target.value
-        setTitleEntered(searchTitle)
-        const newFilter = item.filter((value) => {
-            return value.title.toLowerCase().includes(searchTitle.toLowerCase())
-        })
-
-        if (searchTitle === item.products.title) {
-            setFilteredData([])
-        } else {
-            setFilteredData(newFilter)
-        }
-    }
-
-    const clearInput = () => {
-        setFilteredData([])
-        setTitleEntered("")
-    }
-
-    // const [state, dispatch] = useStoreContext();
-  
-    // const { search } = state;
-  
-    // const [ queryProducts ] = useLazyQuery(QUERY_PRODUCTS);
+    const [titleEntered, setTitleEntered] = useState("")
 
     // const {
     //     title,
     //     description,
     //     _id
     //   } = item;
+    // console.log(item)
 
+    const clearInput = () => {
+        setFilteredData([])
+        setTitleEntered("")
+    }
+
+    const [ queryProducts ] = useLazyQuery(QUERY_PRODUCTS);
+
+    // useEffect(() => {
+    //     const getProductData = async() => {
+    //         const { data } = await queryProducts()
+    //         console.log(data.products)
+    //     }
+    //     getProductData()
+    // }, [dispatch, queryProducts])
+
+    const handleFilter = (e) => {
+        const { data } = queryProducts
+        const searchTitle = e.target.value
+        console.log(data)
+        setTitleEntered(searchTitle)
+        const newFilter = data.filter((value) => {
+            return value.title.toLowerCase().includes(searchTitle.toLowerCase())
+        })
+
+        if (searchTitle) {
+            setFilteredData([])
+        } else {
+            setFilteredData(newFilter)
+        }
+    }
+
+
+    const { search } = state;
+
+    
     // function submitSearch() {
     //     const searchInput = search.findAll((products) => products.title === title)
     //     if(searchInput !== title) {
