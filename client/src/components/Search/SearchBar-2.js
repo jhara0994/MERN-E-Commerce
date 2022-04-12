@@ -9,7 +9,7 @@ import { useLazyQuery } from '@apollo/client';
 import ProductItem from '../ProductItem/ProductItem';
 import { idbPromise } from '../../utils/helpers';
 
-function SearchBar({data}) {
+function SearchBar() {
     const [state, dispatch] = useStoreContext();
 
     const [filteredData, setFilteredData] = useState([])
@@ -17,35 +17,17 @@ function SearchBar({data}) {
 
     const [ queryProducts ] = useLazyQuery(QUERY_PRODUCTS);
 
-    const getProductData = async() => {
-        const { data } = await queryProducts()
-        console.log(data.products)
-    }
-
-    // getProductData()
-
-    // const {
-    //     title,
-    //     description,
-    //     _id
-    //   } = item;
-    // console.log(item)
-
-    // useEffect(() => {
-    //     // const getProductData = async() => {
-    //     //     const { data } = await queryProducts()
-    //     //     console.log(data.products)
-    //     // }
-    //     getProductData()
-    // }, [dispatch, queryProducts])
-
-    const handleFilter = (e) => {
-        const productData = getProductData()
+    const handleFilter = async (e) => {
         const searchTitle = e.target.value
-        console.log(productData)
+        const  {data}  = await queryProducts({variables: {title: searchTitle}})
+        console.log(data)
+
+        const productData = data.products
+
         setSearchTerm(searchTitle)
         console.log(searchTitle)
-        const newFilter = data.products.filter((value) => {
+
+        const newFilter = productData.filter((value) => {
             return value.title.toLowerCase().includes(searchTitle.toLowerCase())
         })
 
@@ -60,25 +42,6 @@ function SearchBar({data}) {
         setFilteredData([])
         setSearchTerm("")
     }
-
-
-    const { search } = state;
-
-    
-    // function submitSearch() {
-    //     const searchInput = search.findAll((products) => products.title === title)
-    //     if(searchInput !== title) {
-    //         alert('Please enter a different product title')
-    //     } else {
-    //         dispatch({
-    //             type: SEARCH_BAR,
-    //             products: { ...item}
-    //         })
-    //         idbPromise('product', 'get', { ...item})
-    //     }
-
-    // }
-
 
     return (
         <div className={css.searchContainer}>
