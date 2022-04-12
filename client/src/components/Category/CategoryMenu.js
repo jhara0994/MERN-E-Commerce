@@ -46,7 +46,7 @@ function CategoryMenu() {
 
 
   return (
-    <div className={classes} id="categories">
+    <div className={classes.categories} id="categories">
       <h2>Categories:</h2>
       {state.categories.map((item) => (
         <button

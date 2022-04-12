@@ -9,6 +9,7 @@ import Home from './pages/Home/Home.js'
 import Header from './components/Header/index';
 import Footer from './components/Footer/index';
 import ImageUpload from './components/ImageUpload/ImageUpload';
+import SearchBar from './components/Search/SearchBar-2';
 
 //Must change URI in production
 const httpLink = createHttpLink({
@@ -39,7 +40,8 @@ function App() {
       <StoreProvider>
         <Header />
         <Home />
-        <Footer/>
+        <SearchBar />
+        <Footer />
       </StoreProvider>
     </ApolloProvider>
   );
