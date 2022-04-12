@@ -15,6 +15,7 @@ const Cart = () => {
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   useEffect(() => {
+    console.log(data)
     if (data) {
       stripePromise.then((res) => {
         res.redirectToCheckout({ sessionId: data.checkout.session });
@@ -58,6 +59,7 @@ const Cart = () => {
       variables: { products: productIds },
     });
   }
+  
 
   if (!state.cartOpen) {
     return (
@@ -82,7 +84,7 @@ const Cart = () => {
           ))}
 
           <div className="flex-row space-between">
-            <strong>Total: ${calculateTotal()}</strong>
+            <strong>Total: {calculateTotal()}</strong>
 
             {Auth.loggedIn() ? (
               <button onClick={submitCheckout}>Checkout</button>

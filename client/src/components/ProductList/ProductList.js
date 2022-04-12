@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ProductItem from '../ProductItem/ProductItem';
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
-import { useQuery, useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
@@ -16,7 +16,7 @@ function ProductList() {
   useEffect(() => {
     const getProductData = async() => {
       const  { data } = await queryProducts()
-      console.log(data.products)
+      
 
       if (data.products) {
         dispatch({
@@ -29,7 +29,7 @@ function ProductList() {
       });
     } 
     getProductData()
-  }, [dispatch]);
+  }, [dispatch, queryProducts]);
 
 
   function filterProducts() {
