@@ -77,8 +77,13 @@ const startApolloServer = async (typeDefs, resolvers) => {
     })
   })
 
-  // db.stores.find( { $text: { $search: "" } } )
   };
+
+   // db.stores.find( { $text: { $search: "" } } )
+
+
+
+
   
 // Call the async function to start the server
   startApolloServer(typeDefs, resolvers);

@@ -43,7 +43,7 @@ function App() {
         <Header />
         <Home />
         <SearchBar />
-        <Footer/>
+        <Footer />
       </StoreProvider>
     </ApolloProvider>
   );
