@@ -4,6 +4,7 @@ import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import css from './Product.module.css'
 
 function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
@@ -30,7 +31,7 @@ function ProductItem(item) {
   }
 
   return (
-    <div className="card px-1 py-1">
+    <div className={css.card}>
       {/* <Link to='/products/:id' */}
         <h3>{title}</h3>
         <img
