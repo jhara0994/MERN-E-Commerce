@@ -5,6 +5,7 @@ import { UPDATE_PRODUCTS } from '../../utils/actions';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
+import css from './Product.module.css'
 
 function ProductList() {
   const [state, dispatch] = useStoreContext();
@@ -43,8 +44,8 @@ function ProductList() {
   }
 
   return (
-    <div className="my-2">
-      <h2>Our Products:</h2>
+    <div className={css.product}>
+      <h2>Products:</h2>
       {state.products.length ? (
         <div className="flex-row">
           {filterProducts().map((products) => (

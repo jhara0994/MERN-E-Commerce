@@ -50,6 +50,7 @@ function CategoryMenu() {
     <div className={classes.categories} id="categories">
       <h2>Categories:</h2>
       {state.categories.map((item) => (
+        
         <button
           key={item._id}
           onClick={() => {
@@ -58,6 +59,7 @@ function CategoryMenu() {
         >
           {item.name}
         </button>
+        
       ))}
     </div>
   );
