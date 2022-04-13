@@ -2,12 +2,14 @@
     {
       "title": "Mona Lisa",
       "description": "Da Vinci",
-      "price": 150000
+      "price": 150000,
+      "image": "mona_lisa.png"
     },
     {
       "title": "The Starry Night",
       "description": "Vincent Van Gogh",
-      "price": 90000
+      "price": 90000,
+      "image": "starry_night.png"
     },
     {
       "title": "American Gothic",
