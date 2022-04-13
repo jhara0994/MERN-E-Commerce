@@ -14,46 +14,55 @@
     {
       "title": "American Gothic",
       "description": "Grant Wood",
-      "price": 120000
+      "price": 120000,
+      "image": "american_gothic.png"
     },
     {
       "title": "The Persistence of Memory",
       "description": "Salvador Dali",
-      "price": 120000
+      "price": 120000,
+      "image": "persistence.png"
     },
     {
       "title": "The Tower of Babel",
       "description": "Pieter Bruegel the Elder",
-      "price": 130000
+      "price": 130000,
+      "image": "babel.png"
     },
     {
       "title": "The Musicians",
       "description": "Michelangelo Merisi da Caravaggio",
-      "price": 175000
+      "price": 175000,
+      "image": "musician.png"
     },
     {
       "title": "Vitruvian Man",
       "description": "Da Vinci",
-      "price": 125000
+      "price": 125000,
+      "image": "vitruvian.png"
     },
     {
       "title": "Irises",
       "description": "Vincent Van Gogh",
-      "price": 125000
+      "price": 125000,
+      "image": "irises.png"
     },
     {
       "title": "Paris Street; Rainy Day",
       "description": "Gustave Caillebotte",
-      "price": 125000
+      "price": 125000,
+      "image": "rainy.png"
     },
     {
       "title": "Portrait of Madame X",
       "description": "John Singer Sargent",
-      "price": 145000
+      "price": 145000,
+      "image": "madame.png"
     },
     {
       "title": "The Night Cafe",
       "description": "Vincent Van Gogh",
-      "price": 135000
+      "price": 135000,
+      "image": "cafe.png"
     }
   ]

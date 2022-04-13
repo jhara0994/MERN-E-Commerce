@@ -27,15 +27,12 @@ function ProductItem(item) {
   console.log(image);
 
   return (
-    <div className={css.card}>
-      {/* <Link to='/products/:id' */}
+    <div className={css.productCard}>
       <h3>{title}</h3>
       {image && (
         <img alt={title} src={require(`../../assets/images/${image}`)} />
       )}
-
       <p>{description}</p>
-      {/* </Link> */}
       <div>
         <div>1 item in stock</div>
         <span>{price}</span>
