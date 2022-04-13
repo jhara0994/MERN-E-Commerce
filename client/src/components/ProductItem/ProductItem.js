@@ -44,7 +44,7 @@ function ProductItem(item) {
         <div>1 item in stock</div>
         <span>{price}</span>
       </div>
-      <button onClick={addToCart}>Add to cart</button>
+      {!item.seller && <button onClick={addToCart}>Add to cart</button>}
     </div>
   );
 }

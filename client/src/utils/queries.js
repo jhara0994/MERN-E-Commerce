@@ -23,6 +23,7 @@ query Products {
     description
     image
     price
+    sellerId
   }
 }`;
 

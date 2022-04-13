@@ -10,6 +10,7 @@ import Header from './components/Header/index';
 import Footer from './components/Footer/index';
 import ImageUpload from './components/ImageUpload/ImageUpload';
 import SearchBar from './components/Search/SearchBar-2';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 //Must change URI in production
 const httpLink = createHttpLink({
@@ -18,11 +19,7 @@ const httpLink = createHttpLink({
 
 
 
-<<<<<<< HEAD
-const authLink = setContext((_, {headers} ) => {
-=======
 const authLink = setContext((_, {headers}) => {
->>>>>>> main
   const token = localStorage.getItem('id_token');
   return {
     headers: {
@@ -45,6 +42,7 @@ function App() {
         <Header />
         <Home />
         <SearchBar />
+        <Dashboard />
         <Footer />
       </StoreProvider>
     </ApolloProvider>

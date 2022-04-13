@@ -114,13 +114,20 @@ const resolvers = {
   
         return { token, user };
       },
-      addOrder: async (parent, { products }, context) => {
+      addOrder: async (parent, { products, buyerId, sellerId }, context) => {
         
         if (context.user) {
-          const order = new Order({ products });
+          const order = await Order.create({ products, buyerId: context.user._id, sellerId });
   
-          await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+          await User.findByIdAndUpdate(context.user._id, { $push: { orders: order._id } });
   
+          return order;
+        } else if (buyerId) {
+          const order = await Order.create({ products, buyerId, sellerId });
+          
+  
+          await User.findByIdAndUpdate(buyerId, { $push: { orders: order._id } });
+        
           return order;
         }
   
@@ -133,14 +140,16 @@ const resolvers = {
   
         throw new AuthenticationError('Not logged in');
       },
-      addProduct: async (parent, args, context) => {
-        if(context.user) {
-          const newProduct = await Product.create({ ...args })
-          await User.findByIdAndUpdate(context.user._id, {$addToSet: {'catalog':newProduct._id}})
+      addProduct: async (parent, args) => {
+          try {
+            const newProduct = await Product.create({ ...args })
+          await User.findByIdAndUpdate(newProduct.sellerId, {$addToSet: {'catalog':newProduct._id}})
           return newProduct
-        } else {
-          return console.log('No User context Found')
-        }
+          } catch (err) {
+            console.log(`Error adding product: ${err}`)
+          }
+          
+        
       },
       updateProduct: async (parent, { _id, args }) => {
 
