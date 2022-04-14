@@ -40,7 +40,7 @@ function ProductItem(item) {
         <div>Category{category}</div>
         <div>Seller {sellerId}</div>
       </div>
-      <button onClick={addToCart}>Add to cart</button>
+      {!item.seller && <button onClick={addToCart}>Add to cart</button>}
     </div>
     </div>
   );

@@ -8,7 +8,8 @@ import {
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
   TOGGLE_CART,
-  SEARCH_BAR
+  SEARCH_BAR,
+  TOGGLE_DISPLAY_PRODUCT_IMAGE_UPLOAD
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -74,7 +75,12 @@ export const reducer = (state, action) => {
         ...state,
         products: [...action.products]
       };
-  
+      case TOGGLE_DISPLAY_PRODUCT_IMAGE_UPLOAD:
+        return{
+          ...state, 
+          toggleDisplayProductImageUpload: !state.toggleDisplayProductImageUpload
+        };
+
       default:
         return state;
     }

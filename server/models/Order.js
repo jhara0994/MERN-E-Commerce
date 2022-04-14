@@ -14,11 +14,13 @@ const orderSchema = new Schema({
     }
   ],
   sellerId: {
-    type: Number,
+    type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
   },
   buyerId: {
-    type: Number,
+    type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
   }
 });
