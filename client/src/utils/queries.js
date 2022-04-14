@@ -15,14 +15,29 @@ import { gql } from '@apollo/client';
 //   }
 // `;
 
-export const QUERY_PRODUCTS = gql`
-query Products {
-  products {
+export const QUERY_MULTIPLE_PRODUCTS = gql`
+query MultipleProducts($ids: [ID]) {
+  multipleProducts(ids: $ids) {
     _id
     title
     description
     image
     price
+    category
+    sellerId
+  }
+}
+`;
+
+export const QUERY_PRODUCTS = gql`
+query GetProducts($category: ID, $title: String, $productsId: ID) {
+  products(category: $category, title: $title, id: $productsId) {
+    _id
+    title
+    description
+    image
+    price
+    category
     sellerId
   }
 }`;
@@ -60,23 +75,26 @@ query Query {
   `
 
   export const QUERY_USER = gql`
-  query Query {
-    user {
+  query QueryUser($id: ID) {
+    user(_id: $id) {
       username
       email
-      orders {
-        _id
-        purchaseDate
-        products {
-          _id
-          title
-          description
-          image
-          price
-        }
-      }
-      sellerId
-      buyerId
+      password
+      avatarUrl
+      orders
+      catalog
     }
   }
+`;
+
+export const QUERY_ORDERS = gql`
+query GetOrders($userId: ID!) {
+  order(userId: $userId) {
+    _id
+    purchaseDate
+    products
+    sellerId
+    buyerId
+  }
+}
 `;

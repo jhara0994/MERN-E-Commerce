@@ -19,7 +19,7 @@ function CategoryMenu() {
   useEffect(() => {
     const getCategoryData = async() => {
       const { data } = await queryCategories()
-      console.log(data.categories) 
+     
 
       data.categories.forEach((category) => {
         idbPromise('categories', 'put', category);

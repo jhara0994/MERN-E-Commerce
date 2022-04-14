@@ -23,10 +23,10 @@ const userSchema = new Schema({
   avatarUrl: {
     type: String,
   },
-  orders: {
+  orders: [{
     type: Schema.Types.ObjectId,
     ref: 'Order'
-  },
+  }],
   catalog: [
     {
       type: Schema.Types.ObjectId, 

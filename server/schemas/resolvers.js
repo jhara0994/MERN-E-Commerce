@@ -8,7 +8,7 @@ const resolvers = {
       categories: async () => {
         return await Category.find();
       },
-      products: async (parent, { category, title }) => {
+      products: async (parent, { category, title, id }) => {
         const params = {};
   
         if (category) {
@@ -20,42 +20,43 @@ const resolvers = {
             $regex: title
           };
         }
+        if(id){
+          params._id = id
+        }
   
-        return await Product.find(params).populate('category');
+        return await Product.find(params);
       },
-      product: async (parent, { _id }) => {
-        return await Product.findById(_id).populate('category');
+      multipleProducts: async(parent, {ids}) => {
+        const products = ids.map(async (id)=>{
+         const product = await Product.findById(id)
+         return product 
+        } 
+        )
+        return products;
       },
-
-      // search: async (parent, {_id }) => {
-      //   const { prodTitle } = req.query;
-      //   return await Product.find({$text: {$search: prodTitle}})
-      // },
-
-      user: async (parent, args, context) => {
-        if (context.user) {
-          const user = await User.findById(context.user._id).populate({
-            path: 'orders.products',
-            populate: 'category'
-          });
-  
-          user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-  
+      user: async (parent,{_id}) =>{
+        if(_id){
+          const user = await User.findById(_id)
+          
           return user;
         }
-  
-        throw new AuthenticationError('Not logged in');
-      },
-      order: async (parent, { _id }, context) => {
-        if (context.user) {
-          const user = await User.findById(context.user._id).populate({
-            path: 'orders.products',
-            populate: 'category'
-          });
-  
-          return user.orders.id(_id);
+        else{
+          throw new AuthenticationError('No ID Provided!');
         }
+      } ,
+      order: async (parent, { userId }, context) => {
+        if (context.user) {
+          const user = await User.findById(context.user._id).populate('orders');
+          
   
+          return user.orders;
+        }
+          else if (userId){
+            const user = await User.findById(userId).populate('orders');
+            //console.log(user)
+            return user.orders;
+          }
+        
         throw new AuthenticationError('Not logged in');
       },
       checkout: async (parent, args, context) => {
