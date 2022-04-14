@@ -1,39 +1,123 @@
 const db = require('../config/connection');
-const { Category, Order, Product, User } = require('../models');
-
-const userData = require('./userData.json');
-const productData = require('./productData.json');
-const categoryData = require('./categoryData.json');
-// const orderData = require('/orderData.json');
+const { Category, Product, User } = require('../models');
 
 db.once('open', async () => {
-  await User.deleteMany({});
-  await Product.deleteMany({});
-  await Category.deleteMany({});
+    await Category.deleteMany()
 
-
-  
-  await User.create(userData);
-  console.log('************ Users seeded! ************');
-  
-  await Category.create(categoryData);
+    const categories = await Category.insertMany([
+        { name: 'Renaissance'},
+        { name: 'Baroque'},
+        { name: 'Post-Impressionism'},
+        { name: 'Modernism'},
+        { name: 'Surrealism'},
+        { name: 'Impressionism'},
+        { name: 'Realism'}
+    ]);
     console.log('************ Categories seeded! ************');
 
-  const users = await User.find();
-  const userIds = users.map(user => user._id);
-  const categories = await Category.find();
-  const categoryIds = categories.map(category => category._id);
-  for (let i = 0; i < productData.length; i++) {
-    const product = productData[i];
-    product.sellerId = userIds[Math.floor(Math.random()*userIds.length)]
-    product.category = categoryIds[Math.floor(Math.random()*categoryIds.length)]
-  }
-
-  
-
-  await Product.create(productData);
-  console.log('************ Products seeded! ************');
+    await User.deleteMany()
+    const users = await User.insertMany([
+        { username: "Shaq", email: "shaq@gmail.com", password: "shaq01" },
+        { username: "Jrod", email: "jrod@yahoo.com", password: "jrod29" },
+        { username: "Chilo", email: "chilo@gmail.com", password: "chilo12" },
+        { username: "Aubrey", email: "aubrey@hotmail.com", password: "acrook18" }
+    ])
+    console.log('************ Users seeded! ************');
 
 
-  process.exit(0);
-});
+    await Product.deleteMany()
+    const products = await Product.insertMany([
+        {
+            title: "Mona Lisa",
+            description: "Leonardo da Vinci",
+            price: 15000,
+            image: "mona_lisa.png",
+            category: categories[0]._id,
+            sellerId: users[1]._id
+        },
+        {
+            title: "The Starry Night",
+            description: "Vincent Van Gogh",
+            price: 9000,
+            image: "starry_night.png",
+            category: categories[2]._id,
+            sellerId: users[0]._id
+        },
+        {
+            title: "American Gothic",
+            description: "Grant Wood",
+            price: 9500,
+            image: "american_gothic.png",
+            category: categories[3]._id,
+            sellerId: users[2]._id
+        },
+        {
+            title: "The Persistence of Memory",
+            description: "Salvador Dali",
+            price: 12000,
+            image: "persistence.png",
+            category: categories[4]._id,
+            sellerId: users[0]._id
+        },
+        {
+            title: "The Tower of Babel",
+            description: "Pieter Bruegel the Elder",
+            price: 5000,
+            image: "babel.png",
+            category: categories[0]._id,
+            sellerId: users[2]._id
+        },
+        {
+            title: "The Musicians",
+            description: "Michelangelo Merisi da Caravaggio",
+            price: 11000,
+            image: "musician.png",
+            category: categories[1]._id,
+            sellerId: users[0]._id
+        },
+        {
+            title: "Vitruvian Man",
+            description: "Leonardo da Vinci",
+            price: 13000,
+            image: "vitruvian.png",
+            category: categories[0]._id,
+            sellerId: users[1]._id
+        },
+        {
+            title: "Irises",
+            description: "Vincent Van Gogh",
+            price: 13000,
+            image: "irises.png",
+            category: categories[2]._id,
+            sellerId: users[3]._id
+        },
+        {
+            title: "Paris Street; Rainy Day",
+            description: "Gustave Caillebotte",
+            price: 8000,
+            image: "rainy.png",
+            category: categories[5]._id,
+            sellerId: users[2]._id
+        },
+        {
+            title: "Portrait of Madame X",
+            description: "John Singer Sargent",
+            price: 8500,
+            image: "madame.png",
+            category: categories[5]._id,
+            sellerId: users[1]._id
+        },
+        {
+            title: "The Night Cafe",
+            description: "Vincent Van Gogh",
+            price: 9500,
+            image: "cafe.png",
+            category: categories[2]._id,
+            sellerId: users[0]._id
+        }
+    ])
+    console.log('************ Products seeded! ************');
+
+    process.exit()
+
+})

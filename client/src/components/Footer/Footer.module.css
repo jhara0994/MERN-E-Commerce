@@ -1,0 +1,9 @@
+.footerInfo {
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.footerInfo a {
+    font-size: 18px;
+    padding: 5px;
+}

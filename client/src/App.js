@@ -6,9 +6,11 @@ import { StoreProvider } from './utils/GlobalState';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.js';
 import Home from './pages/Home/Home.js'
-import Header from './components/Header/index';
-import Footer from './components/Footer/index';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import ImageUpload from './components/ImageUpload/ImageUpload';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 //Must change URI in production
 const httpLink = createHttpLink({
@@ -17,13 +19,11 @@ const httpLink = createHttpLink({
 
 
 
-const authLink = setContext((_, { headers }) => {
+const authLink = setContext((_, {headers}) => {
   const token = localStorage.getItem('id_token');
-  console.log(token)
-  console.log(headers)
   return {
     headers: {
-      ...headers,
+    ...headers,
       authorization: token ? `Bearer ${token}` : '',
     },
   };
@@ -41,7 +41,7 @@ function App() {
       <StoreProvider>
         <Header />
         <Home />
-        <Footer/>
+        <Footer />
       </StoreProvider>
     </ApolloProvider>
   );

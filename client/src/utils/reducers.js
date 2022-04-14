@@ -8,6 +8,7 @@ import {
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
   TOGGLE_CART,
+  SEARCH_BAR
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -67,6 +68,12 @@ export const reducer = (state, action) => {
           ...state,
           currentCategory: action.currentCategory,
         };
+
+      case SEARCH_BAR: 
+      return {
+        ...state,
+        products: [...action.products]
+      };
   
       default:
         return state;

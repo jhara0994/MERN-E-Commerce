@@ -8,24 +8,34 @@ const resolvers = {
       categories: async () => {
         return await Category.find();
       },
-      products: async (parent, { category, name }) => {
+      products: async (parent, { category, title, id }) => {
         const params = {};
   
         if (category) {
           params.category = category;
         }
   
-        if (name) {
-          params.name = {
-            $regex: name
+        if (title) {
+          params.title = {
+            $regex: title
           };
         }
+
+        if(id) {
+          params._id = id
+        }
   
-        return await Product.find(params).populate('category');
+        return await Product.find(params);
       },
       product: async (parent, { _id }) => {
         return await Product.findById(_id).populate('category');
       },
+
+      // search: async (parent, {_id }) => {
+      //   const { prodTitle } = req.query;
+      //   return await Product.find({$text: {$search: prodTitle}})
+      // },
+
       user: async (parent, args, context) => {
         if (context.user) {
           const user = await User.findById(context.user._id).populate({
@@ -61,8 +71,6 @@ const resolvers = {
   
         const { products } = await order.populate('products');
 
-        
-  
         for (let i = 0; i < products.length; i++) {
           try {
             const product = await stripe.products.create({
@@ -84,10 +92,8 @@ const resolvers = {
           } catch (error) {
             console.log(error)
           }
-          
         }
         
-  
         const session = await stripe.checkout.sessions.create({
           payment_method_types: ['card'],
           line_items,
@@ -95,8 +101,6 @@ const resolvers = {
           success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
           cancel_url: `${url}/`
         });
-
-        
   
         return { session: session.id };
       }
