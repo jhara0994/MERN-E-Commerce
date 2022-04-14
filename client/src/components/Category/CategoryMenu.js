@@ -9,6 +9,7 @@ import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import classes from './Category.module.css'
 
+
 function CategoryMenu() {
   const [state, dispatch] = useStoreContext()
 
@@ -49,6 +50,7 @@ function CategoryMenu() {
     <div className={classes.categories} id="categories">
       <h2>Categories:</h2>
       {state.categories.map((item) => (
+        // {items.filter(item => item.fields.category)}
         <button
           key={item._id}
           onClick={() => {
@@ -57,6 +59,7 @@ function CategoryMenu() {
         >
           {item.name}
         </button>
+        
       ))}
     </div>
   );

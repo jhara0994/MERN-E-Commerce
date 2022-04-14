@@ -6,11 +6,11 @@ import { StoreProvider } from './utils/GlobalState';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.js';
 import Home from './pages/Home/Home.js'
-import Header from './components/Header/index';
-import Footer from './components/Footer/index';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import ImageUpload from './components/ImageUpload/ImageUpload';
-import SearchBar from './components/Search/SearchBar-2';
-import Dashboard from './pages/Dashboard/Dashboard';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 //Must change URI in production
 const httpLink = createHttpLink({
@@ -41,8 +41,6 @@ function App() {
       <StoreProvider>
         <Header />
         <Home />
-        <SearchBar />
-        <Dashboard />
         <Footer />
       </StoreProvider>
     </ApolloProvider>
