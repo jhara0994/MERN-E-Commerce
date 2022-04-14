@@ -9,7 +9,7 @@ import css from "./Product.module.css";
 function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
 
-  const { image, title, description, _id, price } = item;
+  const { image, title, description, _id, price, category, sellerId } = item;
 
   const { cart } = state;
 
@@ -28,6 +28,7 @@ function ProductItem(item) {
 
   return (
     <div className={css.productCard}>
+    <div id="card">
       <h3>{title}</h3>
       {image && (
         <img alt={title} src={require(`../../assets/images/${image}`)} />
@@ -35,9 +36,12 @@ function ProductItem(item) {
       <p>{description}</p>
       <div>
         <div>1 item in stock</div>
-        <span>{price}</span>
+        <div>{price}</div>
+        <div>Category{category}</div>
+        <div>Seller {sellerId}</div>
       </div>
       <button onClick={addToCart}>Add to cart</button>
+    </div>
     </div>
   );
 }

@@ -50,7 +50,7 @@ function CategoryMenu() {
     <div className={classes.categories} id="categories">
       <h2>Categories:</h2>
       {state.categories.map((item) => (
-        
+        // {items.filter(item => item.fields.category)}
         <button
           key={item._id}
           onClick={() => {

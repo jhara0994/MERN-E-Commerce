@@ -35,13 +35,18 @@ function ProductList() {
 
   function filterProducts() {
     if (!currentCategory) {
+      console.log(state)
+      console.log(state.products)
+      console.log(currentCategory)
       return state.products;
-    }
+    } 
 
     return state.products.filter(
-      (product) => product.category._id === currentCategory
+      (product) => product.category === currentCategory,
+      console.log(state.products)
     );
   }
+
 
   return (
     <div className={css.product}>
@@ -57,6 +62,8 @@ function ProductList() {
               description={products.description}
               price={products.price}
               quantity={products.quantity}
+              category={products.category}
+              sellerId={products.sellerId}
             />
           ))}
         </div>
