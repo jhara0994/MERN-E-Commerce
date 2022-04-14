@@ -12,12 +12,12 @@ function ProductList() {
 
   const { currentCategory } = state;
 
-  const  { data, loading, error }  = useQuery(QUERY_PRODUCTS);
+  const { data, loading, error } = useQuery(QUERY_PRODUCTS);
 
   // useEffect(() => {
   //   const getProductData = async() => {
-    
-      
+
+
 
   //     if (data.products) {
   //       dispatch({
@@ -32,13 +32,13 @@ function ProductList() {
   //   getProductData()
   // }, [dispatch, queryProducts]);
 
-  if(loading) {
+  if (loading) {
     return (
       <div>
         Loading
       </div>
     )
-  } 
+  }
 
   if (error) {
     return (
@@ -52,7 +52,7 @@ function ProductList() {
     if (!currentCategory) {
       console.log(currentCategory)
       return data.products;
-    } 
+    }
 
     return data.products.filter(
       (product) => product.category === currentCategory,
