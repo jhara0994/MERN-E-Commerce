@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ProductItem from '../ProductItem/ProductItem';
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
-import { useLazyQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import css from './Product.module.css'
@@ -12,38 +12,54 @@ function ProductList() {
 
   const { currentCategory } = state;
 
-  const [ queryProducts ] = useLazyQuery(QUERY_PRODUCTS);
+  const  { data, loading, error }  = useQuery(QUERY_PRODUCTS);
 
-  useEffect(() => {
-    const getProductData = async() => {
-      const  { data } = await queryProducts()
+  // useEffect(() => {
+  //   const getProductData = async() => {
+    
       
 
-      if (data.products) {
-        dispatch({
-          type: UPDATE_PRODUCTS,
-          products: data.products,
-        });  
-      }
-      data.products.forEach((product) => {
-        idbPromise('products', 'put', product);
-      });
-    } 
-    getProductData()
-  }, [dispatch, queryProducts]);
+  //     if (data.products) {
+  //       dispatch({
+  //         type: UPDATE_PRODUCTS,
+  //         products: data.products,
+  //       });  
+  //     }
+  //     data.products.forEach((product) => {
+  //       idbPromise('products', 'put', product);
+  //     });
+  //   } 
+  //   getProductData()
+  // }, [dispatch, queryProducts]);
 
+  if(loading) {
+    return (
+      <div>
+        Loading
+      </div>
+    )
+  } 
+
+  if (error) {
+    return (
+      <div>
+        Error
+      </div>
+    )
+  }
 
   function filterProducts() {
     if (!currentCategory) {
       console.log(currentCategory)
-      return state.products;
+      return data.products;
     } 
 
-    return state.products.filter(
+    return data.products.filter(
       (product) => product.category === currentCategory,
       console.log(currentCategory),
-      console.log(state.product),
-      console.log(state.products)
+      console.log(data.products[0].category),
+      console.log(data.products[0].title),
+      console.log(data.products)
     );
   }
 
@@ -51,7 +67,7 @@ function ProductList() {
   return (
     <div className={css.product}>
       <h2>Products:</h2>
-      {state.products.length ? (
+      {data.products.length ? (
         <div className="flex-row">
           {filterProducts().map((products) => (
             <ProductItem
@@ -62,8 +78,8 @@ function ProductList() {
               description={products.description}
               price={products.price}
               quantity={products.quantity}
-              // category={products.category}
-              // sellerId={products.sellerId}
+              category={products.category}
+              sellerId={products.sellerId}
             />
           ))}
         </div>

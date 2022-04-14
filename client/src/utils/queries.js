@@ -16,13 +16,15 @@ import { gql } from '@apollo/client';
 // `;
 
 export const QUERY_PRODUCTS = gql`
-query Products {
-  products {
+query GetProducts($category: ID, $title: String, $productsId: ID) {
+  products(category: $category, title: $title, id: $productsId) {
     _id
     title
     description
     image
     price
+    category
+    sellerId
   }
 }`;
 

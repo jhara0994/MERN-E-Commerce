@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { pluralize } from "../../utils/helpers";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART } from "../../utils/actions";
@@ -24,16 +24,16 @@ function ProductItem(item) {
     }
   };
 
-  console.log(image);
-
   return (
     <div className={css.productCard}>
     <div id="card">
+    {/* <Link to={`/products/${_id}`}> */}
       <h3>{title}</h3>
       {image && (
         <img alt={title} src={require(`../../assets/images/${image}`)} />
       )}
       <p>{description}</p>
+      {/* </Link> */}
       <div>
         <div>1 item in stock</div>
         <div>{price}</div>

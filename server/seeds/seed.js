@@ -30,7 +30,7 @@ db.once('open', async () => {
         {
             title: "Mona Lisa",
             description: "Leonardo da Vinci",
-            price: 1500000,
+            price: 15000,
             image: "mona_lisa.png",
             category: categories[0]._id,
             sellerId: users[1]._id
@@ -38,7 +38,7 @@ db.once('open', async () => {
         {
             title: "The Starry Night",
             description: "Vincent Van Gogh",
-            price: 900000,
+            price: 9000,
             image: "starry_night.png",
             category: categories[2]._id,
             sellerId: users[0]._id
@@ -46,7 +46,7 @@ db.once('open', async () => {
         {
             title: "American Gothic",
             description: "Grant Wood",
-            price: 950000,
+            price: 9500,
             image: "american_gothic.png",
             category: categories[3]._id,
             sellerId: users[2]._id
@@ -54,7 +54,7 @@ db.once('open', async () => {
         {
             title: "The Persistence of Memory",
             description: "Salvador Dali",
-            price: 1200000,
+            price: 12000,
             image: "persistence.png",
             category: categories[4]._id,
             sellerId: users[0]._id
@@ -62,7 +62,7 @@ db.once('open', async () => {
         {
             title: "The Tower of Babel",
             description: "Pieter Bruegel the Elder",
-            price: 500000,
+            price: 5000,
             image: "babel.png",
             category: categories[0]._id,
             sellerId: users[2]._id
@@ -70,7 +70,7 @@ db.once('open', async () => {
         {
             title: "The Musicians",
             description: "Michelangelo Merisi da Caravaggio",
-            price: 1100000,
+            price: 11000,
             image: "musician.png",
             category: categories[1]._id,
             sellerId: users[0]._id
@@ -78,7 +78,7 @@ db.once('open', async () => {
         {
             title: "Vitruvian Man",
             description: "Leonardo da Vinci",
-            price: 1300000,
+            price: 13000,
             image: "vitruvian.png",
             category: categories[0]._id,
             sellerId: users[1]._id
@@ -86,7 +86,7 @@ db.once('open', async () => {
         {
             title: "Irises",
             description: "Vincent Van Gogh",
-            price: 1300000,
+            price: 13000,
             image: "irises.png",
             category: categories[2]._id,
             sellerId: users[3]._id
@@ -94,7 +94,7 @@ db.once('open', async () => {
         {
             title: "Paris Street; Rainy Day",
             description: "Gustave Caillebotte",
-            price: 800000,
+            price: 8000,
             image: "rainy.png",
             category: categories[5]._id,
             sellerId: users[2]._id
@@ -102,7 +102,7 @@ db.once('open', async () => {
         {
             title: "Portrait of Madame X",
             description: "John Singer Sargent",
-            price: 850000,
+            price: 8500,
             image: "madame.png",
             category: categories[5]._id,
             sellerId: users[1]._id
@@ -110,7 +110,7 @@ db.once('open', async () => {
         {
             title: "The Night Cafe",
             description: "Vincent Van Gogh",
-            price: 950000,
+            price: 9500,
             image: "cafe.png",
             category: categories[2]._id,
             sellerId: users[0]._id
