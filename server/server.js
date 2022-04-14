@@ -6,7 +6,7 @@ const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 var fs = require('fs');
 var busboy = require('connect-busboy');
-const { User } = require('./models');
+const { User, Product } = require('./models');
 const Auth = require('./utils/auth.js')
 
 
@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-app.post('/api/images', function (req, res) {
+app.post('/api/images/user', function (req, res) {
   var fstream;
 
   const token = req.headers.authorization.split(' ').pop().trim();
@@ -63,6 +63,29 @@ app.post('/api/images', function (req, res) {
   });
 });
 
+app.post('/api/images/product/:productId', function (req, res) {
+  var fstream;
+
+  req.pipe(req.busboy);
+  req.busboy.on('file', function (fieldname, file, filename) {
+    console.log("Uploading photo");
+
+    fstream = fs.createWriteStream(__dirname + '/images/' + filename);
+    file.pipe(fstream);
+    fstream.on('close', function () {
+      cloudinary.uploader.upload(__dirname + '/images/' + filename).then(async (res) => {
+        fs.unlink(__dirname + '/images/' + filename, (err) => {
+          if (err) throw err;
+        })
+
+
+        await Product.findByIdAndUpdate(req.params.productId, { image: res.url })
+
+      })
+      res.redirect('back');
+    });
+  });
+});
 
 
 // Create a new instance of an Apollo server with the GraphQL schema
