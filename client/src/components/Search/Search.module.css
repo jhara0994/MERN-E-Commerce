@@ -2,5 +2,27 @@
     margin-bottom: 5px;
     margin-top: 100px;
     height: 80px;
+    width: 15%;
+}
+
+.searchInput {
+    box-shadow: 2px 3px 28px 1px rgba(0, 0, 0, 0.1);
+    border: 0px solid transparent;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
     width: 100%;
+}
+
+.dataResult {
+    background-color: black;
+    text-align: center;
+    border: dotted 2px black;
+}
+
+.dataResult a {
+    color: yellowgreen;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
 }

@@ -19,7 +19,7 @@ function SearchBar() {
 
     const handleFilter = async (e) => {
         const searchTitle = e.target.value
-        const  {data}  = await queryProducts({variables: {title: searchTitle}})
+        const  {data}  = await queryProducts()
         console.log(data)
 
         const productData = data.products
@@ -28,7 +28,9 @@ function SearchBar() {
         console.log(searchTitle)
 
         const newFilter = productData.filter((value) => {
-            return value.title.toLowerCase().includes(searchTitle.toLowerCase())
+            console.log(value.title.toLowerCase())
+            console.log(searchTitle.toLowerCase())
+            return value.title.toLowerCase().trim().includes(searchTitle.toLowerCase().trim())
         })
 
         if (searchTitle === "") {
@@ -46,17 +48,17 @@ function SearchBar() {
     return (
         <div className={css.searchContainer}>
             <div className="search-input-container">
-                <input type='text' className="search-input" placeholder="Search products" value={searchTerm} onChange={handleFilter} />
+                <input type='text' className={css.searchInput} placeholder="Search products" value={searchTerm} onChange={handleFilter} />
                 <div className="searchIcon">
-                    {filteredData.length ? (
+                    {filteredData.length === 0 ? (
                         <SearchIcon />
                     ) : (
-                        <CloseIcon id="clear-btn" onClick={clearInput} />
+                        <button id="clear-btn" onClick={clearInput}>Clear</button>
                     )}
                 </div>
             </div>
             {filteredData.length !== 0 && (
-                <div className="data-result">
+                <div className={css.dataResult}>
                     {filteredData.slice(0, 15).map((value, key) => {
                         return (
                             <a className="data-item" href={value.title} target="_blank" rel="noreferrer">
