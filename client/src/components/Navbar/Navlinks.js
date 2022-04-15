@@ -5,18 +5,24 @@ import { Nav, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from '../SignupForm/SignupForm';
 import LoginForm from '../LoginForm/LoginForm';
 import { Link } from 'react-router-dom';
-
+import { useStoreContext } from '../../utils/GlobalState';
+import { UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
 
 const Navlinks = (props) => {
     const {handlePageChange} = props
     const from = {opacity:0, y: 50}
     const to = {opacity:1, y: 0}
     const [showModal, setShowModal] = useState(false);
+    const [state, dispatch] = useStoreContext();
+
+    const handleClick = () =>{
+      dispatch({type: UPDATE_CURRENT_CATEGORY, categoryId: null})
+    }
 
     return (
         <>
         <ul>
-          <Link to='/'>
+          <Link to='/' onClick={handleClick}>
             <motion.li
             initial = {from}
             animate = {to}
