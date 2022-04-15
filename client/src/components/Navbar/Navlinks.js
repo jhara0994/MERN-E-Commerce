@@ -4,9 +4,11 @@ import Auth from '../../utils/auth';
 import { Nav, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from '../SignupForm/SignupForm';
 import LoginForm from '../LoginForm/LoginForm';
+import { Link } from 'react-router-dom';
 
 
 const Navlinks = (props) => {
+    const {handlePageChange} = props
     const from = {opacity:0, y: 50}
     const to = {opacity:1, y: 0}
     const [showModal, setShowModal] = useState(false);
@@ -14,12 +16,15 @@ const Navlinks = (props) => {
     return (
         <>
         <ul>
+          <Link to='/'>
             <motion.li
             initial = {from}
             animate = {to}
              onClick={()=>props.mobile && props.closeMenu()}>
                 <a href="#home">Home</a>
             </motion.li>
+          </Link>
+          <Link to='/dashboard'>
             <motion.li
             initial = {from}
             animate = {to}
@@ -27,13 +32,8 @@ const Navlinks = (props) => {
             onClick={()=>props.mobile && props.closeMenu()}>
                 <a href="#dashboard">Dashboard</a>
             </motion.li>
-            <motion.li 
-            initial = {from}
-            animate = {to}
-            transition = {{delay: .2}}
-            onClick={()=>props.mobile && props.closeMenu()}>
-                <a href="#search">Search</a>
-            </motion.li>
+          </Link>
+          <Link to='/contact'>
             <motion.li 
             initial = {from}
             animate = {to}
@@ -41,6 +41,7 @@ const Navlinks = (props) => {
             onClick={()=>props.mobile && props.closeMenu()}>
                 <a href="#contact">Contact</a>
             </motion.li>
+          </Link>
             {Auth.loggedIn() ? (
             <motion.li 
             initial = {from}

@@ -37,12 +37,11 @@ function App() {
   return (
     
     <ApolloProvider client={client}>
-      <StoreProvider>
-        <Header/>
-        <Home />
-        <Dashboard />
-        <Footer />
-      </StoreProvider>
+      <Router>
+        <StoreProvider>
+          <Header />
+        </StoreProvider>
+      </Router>
     </ApolloProvider>
   );
 }
