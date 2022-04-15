@@ -42,6 +42,7 @@ function App() {
       <StoreProvider>
     
         <Home />
+        
         <Footer />
       </StoreProvider>
     </ApolloProvider>

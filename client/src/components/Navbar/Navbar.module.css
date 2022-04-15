@@ -1,8 +1,7 @@
 .Navbar{
     background-color: black;
-    height: 80px;
+    height: 50px;
     width: 100%;
-    position: fixed;
     z-index: 999;
     opacity: 0.9;
     display: flex;
@@ -18,17 +17,18 @@
 
 .Navbar nav ul li {
     display: inline-block;
-    margin: 20px;
 }
 .Navbar nav ul li a, .Navbar nav ul li p{
     text-decoration: none;
     color: white;
+    padding: 20px;
 }
 .Navbar nav ul li a:hover, .Navbar nav ul li p:hover{
     cursor: pointer;
     background: -webkit-linear-gradient(45deg, rgba(253,29,29,1) 30%, rgba(252,176,69,1) 67%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
 }
 
 .Navbar .MobileNav{
