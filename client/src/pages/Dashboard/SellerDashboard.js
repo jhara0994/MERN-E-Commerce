@@ -58,7 +58,7 @@ if(loading){
         <div className={classes.SellerDashboard}>
             <div className={classes.Container}>
                 <h1> Seller Dashboard </h1>
-                <div className={classes.FormContainer}>
+                
                         <form className={classes.ProductForm}>
                             <label htmlFor="title"> Title </label>
                             <input name='title' id='title' placeholder='Title of Artwork' />
@@ -76,7 +76,7 @@ if(loading){
                             <button onClick={handleSubmit} disabled={state.toggleDisplayProductImageUpload} > Upload Picture</button>
                         </form>
                         <ProductImageUpload productId={productId}/>
-                </div>
+                
                 <MyProducts userId={Auth.getProfile().data._id} />
                 
             </div>

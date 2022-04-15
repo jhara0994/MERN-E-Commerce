@@ -44,7 +44,26 @@ function CategoryMenu() {
   return (
     <div className={classes.categories} id="categories">
       <h2>Categories:</h2>
+<<<<<<< HEAD
       <Dropdown />
+=======
+      <div className="dropdown">
+          <button>Select a category below:</button>
+      {state.categories.map((item) => (
+        // {items.filter(item => item.fields.category)}
+          <div key={item._id} className="dropdownContent">
+            <button
+              
+              onClick={() => {
+                handleClick(item._id);
+              }}
+            >
+              {item.name}
+            </button>
+          </div>
+      ))}
+      </div>
+>>>>>>> main
     </div>
   );
 }
