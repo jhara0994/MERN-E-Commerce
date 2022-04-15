@@ -6,6 +6,7 @@ import SearchBar from '../Search/SearchBar'
 const Navbar = () => {
     return (
         <div className={classes.Navbar}>
+            
             <LargeNav />
             <MobileNav />
         </div>

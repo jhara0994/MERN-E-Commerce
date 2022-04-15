@@ -40,7 +40,6 @@ function App() {
       <StoreProvider>
         <Header/>
         <Home />
-        <Dashboard />
         <Footer />
       </StoreProvider>
     </ApolloProvider>
