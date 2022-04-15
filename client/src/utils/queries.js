@@ -23,7 +23,10 @@ query MultipleProducts($ids: [ID]) {
     description
     image
     price
-    category
+    category {
+      _id
+      name
+    }
     sellerId
   }
 }
@@ -37,8 +40,11 @@ query GetProducts($category: ID, $title: String, $productsId: ID) {
     description
     image
     price
-    category
     sellerId
+    category {
+      _id
+      name
+    }
   }
 }`;
 

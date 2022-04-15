@@ -1,0 +1,17 @@
+.ProductContainer{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.ProductItem{
+    flex-basis: 50%;
+    
+}
+
+@media screen and (max-width: 500px) {
+.ProductContainer{
+    flex-direction: column;
+}
+
+}

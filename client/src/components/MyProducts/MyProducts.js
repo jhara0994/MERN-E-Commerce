@@ -6,6 +6,8 @@ import { useLazyQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
+import classes from './MyProducts.module.css';
+
 function MyProducts(props) {
   const [state, dispatch] = useStoreContext();
 
@@ -42,9 +44,10 @@ function MyProducts(props) {
     <div className="my-2">
       <h2>Your Products:</h2>
       {state.products.length ? (
-        <div className="flex-row">
+        <div className={classes.ProductContainer}>
           {filterProducts().map((products) => (
             <ProductItem
+              className={classes.ProductItem}
               key={products._id}
               _id={products._id}
               image={products.image}

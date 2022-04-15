@@ -25,7 +25,8 @@ const Order = (props) =>{
 
     return(
         <div className={classes.Order}>
-            <p className ={classes.PurchaseDate}>{formatTime(parseInt(props.purchaseDate))}</p>
+            <p className ={classes.PurchaseDate}>Order Date: {formatTime(parseInt(props.purchaseDate))}</p>
+            <p className={classes.ItemsPurchased}>Items Purchased</p>
             <ul className={classes.ItemList}>
             {data.multipleProducts.map((product)=>{
                 
@@ -39,7 +40,7 @@ const Order = (props) =>{
             }
             )}     
             </ul>
-            <p>Order total: ${total(priceArray)}</p>
+            <p className={classes.OrderTotal}>Order total: ${total(priceArray)}</p>
 
         </div>
     )

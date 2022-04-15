@@ -7,10 +7,14 @@ import { idbPromise } from "../../utils/helpers";
 import css from "./Product.module.css";
 import Auth from "../../utils/auth";
 
-function ProductItem(item) {
-  const [state, dispatch] = useStoreContext();
 
+function ProductItem(item) {
   const { image, title, description, _id, price, category, sellerId } = item;
+  const [state, dispatch] = useStoreContext();
+  
+  
+ 
+  
   let seller = false;
   const {data: user} = Auth.getProfile();
   if(user.id === sellerId){
@@ -42,8 +46,8 @@ function ProductItem(item) {
       {/* </Link> */}
       <div>
         <div>{price}</div>
-        {category && <div>Category{category}</div>}
-        {sellerId && <div>Seller {sellerId}</div>}
+        {category && <div>Category: {category.name}</div>}
+        {sellerId && <div>Seller: {sellerId} </div>}
       </div>
       {!seller && <button onClick={addToCart}>Add to cart</button>}
     </div>
