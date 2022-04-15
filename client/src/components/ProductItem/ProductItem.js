@@ -39,7 +39,7 @@ function ProductItem(item) {
 
   return (
     <div className={css.productCard}>
-    <div id="card">
+    
     <Link className={css.Link} to={`/product/${_id}`}>
       <h3>{title}</h3>
       {image && (
@@ -48,12 +48,12 @@ function ProductItem(item) {
       <p>{description}</p>
       </Link>
       <div>
-        <div>{price}</div>
+        <div>${price}</div>
         {category && <div>Category: {category.name}</div>}
         {sellerId && <div>Seller: {sellerId.username} </div>}
       </div>
       {(!seller && Auth.loggedIn())&& <button onClick={addToCart}>Add to cart</button>}
-    </div>
+    
     </div>
   );
 }

@@ -1,5 +1,5 @@
 .productCard {
-    display: inline-block;
+    /* display: inline-block; */
     margin-left: 50px;
     padding-right: 5px;
     padding-left: 5px;
@@ -8,9 +8,13 @@
     padding-top: 10px;
     border: solid 3px black;
     width: 250px;
-    height: 450px;
+    /* height: 450px; */
     text-align: center;
     background-color: var(--tea-green);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
 }
 
@@ -21,14 +25,6 @@
     
 }
 
-.productCard #card {
-    
-    
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-}
-
 
 .productCard h3 {
     font-size: 26px;
@@ -37,7 +33,7 @@
 }
 
 .productCard img {
-    width: 50%;
+    width: 70%;
     height: 200px;
     margin-bottom: 20px;
 }
@@ -45,4 +41,5 @@
 .productCard .Link{
     text-decoration: none;
     color: inherit;
+    width: 100%;
 }

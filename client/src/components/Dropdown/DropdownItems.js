@@ -24,7 +24,10 @@ export default function DropdownItems(props) {
     const to = {opacity:1, y: 0}
 
     return(
+        <div>
+        <h2>Categories</h2>
         <div className={classes.Container}>
+            
             {categories.map((category,index) => {
                 return(
                     <div key={category._id}>
@@ -47,5 +50,6 @@ export default function DropdownItems(props) {
                 )
             })}
         </div>
+       </div> 
     )
 }

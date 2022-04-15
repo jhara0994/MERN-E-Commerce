@@ -45,10 +45,10 @@ function ProductList() {
 
   return (
     <div className={css.product}>
-      <h2>Products:</h2>
-      <h2>{ filteredProducts.length ? filteredProducts[0].category.name : "" }</h2>
+      <h2>Products</h2>
+      <h2>{(filteredProducts.length && currentCategory )? `Category: ${filteredProducts[0].category.name}` : "" }</h2>
       {data.products.length? (
-        <div className="flex-row">
+        <div className={css.Container}>
           {filterProducts().map((products) => (
             <ProductItem
               key={products._id}
