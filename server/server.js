@@ -14,7 +14,6 @@ const cloudinary = require('cloudinary').v2;
 console.log(cloudinary.config().cloud_name);
 
 
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -22,7 +21,6 @@ const server = new ApolloServer({
   resolvers,
   context: Auth.authMiddleware
 });
-
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
