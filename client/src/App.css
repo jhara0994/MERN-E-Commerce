@@ -54,5 +54,12 @@ footer {
 
 main {
   margin-top: 100px;
-  min-height: 80vh;
+  min-height: calc(100vh - 190px);
+}
+
+@media screen and (max-width: 996px) { 
+  main {
+    margin-top: 60px;
+    min-height: calc(100vh - 150px);
+  }
 }

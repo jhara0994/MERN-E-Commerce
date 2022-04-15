@@ -1,9 +1,9 @@
 .Navbar{
-    background-color: black;
+    background-color: rgba(27, 27, 27, 0.856);
     height: 50px;
+    backdrop-filter: blur(1.5px);
     width: 100%;
     z-index: 999;
-    opacity: 0.9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,42 +22,66 @@
     text-decoration: none;
     color: white;
     padding: 20px;
+    font-size: 17.6px !important;
 }
 .Navbar nav ul li a:hover, .Navbar nav ul li p:hover{
     cursor: pointer;
     background: -webkit-linear-gradient(45deg, rgba(253,29,29,1) 30%, rgba(252,176,69,1) 67%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
 }
 
 .Navbar .MobileNav{
    display: none;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 @media screen and (max-width: 996px) {
+    .Navbar {
+        background-color: rgba(0, 0, 0, 0.918);
+        position: absolute;
+        top: 0;
+        width: 50px;
+        right: 0;
+
+    }
+
     .Navbar .LargeNav{
         display: none;
+        background-color: rgba(0, 0, 0, 0.918);
     }
     .Navbar .MobileNav{
         display: flex;
         align-items: center;
+        background-color: rgba(0, 0, 0, 0.918);
+    
     }
 
     .Navbar .MobileNav .Hamburger{
         position: absolute;
         right: 5%;
+        left: 0;
         cursor: pointer;
     }
     
     .Navbar nav ul{
-        display: flex;
+        display: grid;
+        grid-gap: 20px;
+        padding-top: 20px;
         flex-direction: column;
         position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
+        top: 40px;
+        left: calc(-100vw + 50px);
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.918);
+    }
+
+    .Navbar nav ul li p {
+        margin: 0;
+        padding-top: 0;
     }
 
     .Navbar nav ul li{
