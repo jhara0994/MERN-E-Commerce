@@ -9,7 +9,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Dashboard from './pages/Dashboard/Dashboard'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Contact from "./pages/Contact/Contact"
+
 
 //Must change URI in production
 const httpLink = createHttpLink({
@@ -40,6 +40,7 @@ function App() {
       <StoreProvider>
         <Header/>
         <Home />
+        <Dashboard />
         <Footer />
       </StoreProvider>
     </ApolloProvider>
