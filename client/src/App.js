@@ -1,5 +1,4 @@
 import React from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { StoreProvider } from './utils/GlobalState';
@@ -10,6 +9,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import ImageUpload from './components/ImageUpload/ImageUpload';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProductDetails from './pages/ProductDetails/ProductDetails'
 
 
 //Must change URI in production

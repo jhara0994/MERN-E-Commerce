@@ -34,6 +34,13 @@ const Navlinks = (props) => {
             onClick={()=>props.mobile && props.closeMenu()}>
                 <a href="#search">Search</a>
             </motion.li>
+            <motion.li 
+            initial = {from}
+            animate = {to}
+            transition = {{delay: .2}}
+            onClick={()=>props.mobile && props.closeMenu()}>
+                <a href="#contact">Contact</a>
+            </motion.li>
             {Auth.loggedIn() ? (
             <motion.li 
             initial = {from}

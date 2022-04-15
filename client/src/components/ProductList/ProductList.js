@@ -14,24 +14,6 @@ function ProductList() {
 
   const { data, loading, error } = useQuery(QUERY_PRODUCTS);
 
-  // useEffect(() => {
-  //   const getProductData = async() => {
-
-
-
-  //     if (data.products) {
-  //       dispatch({
-  //         type: UPDATE_PRODUCTS,
-  //         products: data.products,
-  //       });  
-  //     }
-  //     data.products.forEach((product) => {
-  //       idbPromise('products', 'put', product);
-  //     });
-  //   } 
-  //   getProductData()
-  // }, [dispatch, queryProducts]);
-
   if (loading) {
     return (
       <div>

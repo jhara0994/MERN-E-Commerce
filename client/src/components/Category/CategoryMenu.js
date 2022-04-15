@@ -10,6 +10,7 @@ import { idbPromise } from '../../utils/helpers';
 import classes from './Category.module.css'
 import Dropdown from '../Dropdown/Dropdown'
 import { css } from '@mui/styled-engine';
+import DropdownItems from '../Dropdown/DropdownItems';
 
 
 function CategoryMenu() {
@@ -39,34 +40,11 @@ function CategoryMenu() {
     getCategoryData()
   }, [dispatch]);
 
-  const handleClick = (id) => {
-    dispatch({
-      type: UPDATE_CURRENT_CATEGORY,
-      currentCategory: id,
-    });
-  };
-
-
-
+  
   return (
     <div className={classes.categories} id="categories">
       <h2>Categories:</h2>
-      <div className="dropdown">
-          <button>Select a category below:</button>
-      {state.categories.map((item) => (
-        // {items.filter(item => item.fields.category)}
-          <div className="dropdownContent">
-            <button
-              key={item._id}
-              onClick={() => {
-                handleClick(item._id);
-              }}
-            >
-              {item.name}
-            </button>
-          </div>
-      ))}
-      </div>
+      <Dropdown />
     </div>
   );
 }

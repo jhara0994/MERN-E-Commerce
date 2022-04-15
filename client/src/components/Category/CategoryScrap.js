@@ -9,7 +9,7 @@ return (
         <Dropdown>
         <DropdownButton>
           <DropdownMenu>
-            <Dropdown.Item>
+            <Dropdown.Item
           key={item._id}
           onClick={() => {
             handleClick(item._id);
@@ -23,4 +23,29 @@ return (
       ))}
     </div>
   );
+}
+
+return (
+  <div className={classes.categories} id="categories">
+    <h2>Categories:</h2>
+    <div className="dropdown">
+      <div className="dropdownMain">
+        <button>Select a category below:</button>
+      {state.categories.map((item) => (
+        // {items.filter(item => item.fields.category)}
+        <span className="dropdownContent">
+          <button
+            key={item._id}
+            onClick={() => {
+              handleClick(item._id);
+            }}
+          >
+            {item.name}
+          </button>
+        </span>
+    ))}
+      </div>
+    </div>
+  </div>
+);
 }

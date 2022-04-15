@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
 import  DropdownBtn  from './DropdownBtn'
+import classes from './dropdown.module.css'
+import {FaWindowClose} from 'react-icons/fa';
+import {RiMenu5Fill} from 'react-icons/ri';
+import DropdownItems from './DropdownItems';
 
 export default function Dropdown( props ) {
-    const [ display, setDisplay ] = useState( 'none' )
+    const [expanded, setExpanded] = useState(false);
+    const closeMenu = () => setExpanded(false);
 
-    function handleClick() {
-        if ( display === 'none' ) {
-            setDisplay( 'block' )
-        } else {
-            setDisplay ( 'none' )
-        }
-    }
+    
 
     return (
-        <div className="dropdown-container">
-            <DropdownBtn />
-            <div className="dropdown" style={{display:display}}>
-                { props.children }
-            </div>
+        <div className="dropdownContainer">
+            {!expanded && <RiMenu5Fill className={classes.Hamburger} color='black' size='40px'
+            onClick={()=>setExpanded(!expanded)} />}
+            {expanded && <FaWindowClose className={classes.Hamburger} color='black' size='40px'
+            onClick={()=>setExpanded(!expanded)} />}
+            {expanded && <DropdownItems closeMenu={closeMenu}/>}
         </div>
     )
 }
