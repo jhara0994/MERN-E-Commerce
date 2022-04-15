@@ -61,3 +61,17 @@ export function idbPromise(storeName, method, object) {
     .match(/^([a-z0-9_.-]+)@([\da-z.-]+).([a-z.]{2,6})$/)
 
   }
+  export function formatTime (time) {
+      let date = new Date(time);
+      const month = date.toLocaleString('default', { month: 'long' });
+      let formattedDate = `${month} ${date.getDate()}, ${date.getFullYear()} `;
+      let formattedTime = `${date.toLocaleTimeString()}`;
+      let formattedDateAndTime = `${formattedDate} ${formattedTime}`
+      return formattedDateAndTime;
+  }
+
+export function total(strings){
+  strings = strings.map((string)=> parseInt(string));
+  const sum = strings.reduce((a,b) => a+b, 0)
+  return sum
+}

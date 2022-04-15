@@ -6,7 +6,7 @@ import classes from './Dashboard.module.css';
 const Dashboard = () => {
     return(
         <div className={classes.Dashboard}>
-            {/* <SellerDashboard /> */}
+             <SellerDashboard /> 
             <BuyerDashboard />
         </div>
     )

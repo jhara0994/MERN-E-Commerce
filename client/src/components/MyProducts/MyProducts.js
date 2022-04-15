@@ -52,7 +52,6 @@ function MyProducts(props) {
               description={products.description}
               price={products.price}
               quantity={products.quantity}
-              seller={true}
             />
           ))}
         </div>

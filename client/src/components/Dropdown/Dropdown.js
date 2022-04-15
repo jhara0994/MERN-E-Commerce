@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { DropdownBtn } from './DropdownBtn'
+import  DropdownBtn  from './DropdownBtn'
 
-function Dropdown( props ) {
+export default function Dropdown( props ) {
     const [ display, setDisplay ] = useState( 'none' )
 
     function handleClick() {
@@ -22,4 +22,3 @@ function Dropdown( props ) {
     )
 }
 
-export { Dropdown }

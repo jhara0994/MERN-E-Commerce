@@ -5,11 +5,17 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 import css from "./Product.module.css";
+import Auth from "../../utils/auth";
 
 function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
 
   const { image, title, description, _id, price, category, sellerId } = item;
+  let seller = false;
+  const {data: user} = Auth.getProfile();
+  if(user.id === sellerId){
+    seller = true
+  }
 
   const { cart } = state;
 
@@ -30,17 +36,16 @@ function ProductItem(item) {
     {/* <Link to={`/products/${_id}`}> */}
       <h3>{title}</h3>
       {image && (
-        <img alt={title} src={require(`../../assets/images/${image}`)} />
+        <img alt={title} src={(image.includes('http') ? image : require(`../../assets/images/${image}`))} />
       )}
       <p>{description}</p>
       {/* </Link> */}
       <div>
-        <div>1 item in stock</div>
         <div>{price}</div>
-        <div>Category{category}</div>
-        <div>Seller {sellerId}</div>
+        {category && <div>Category{category}</div>}
+        {sellerId && <div>Seller {sellerId}</div>}
       </div>
-      {!item.seller && <button onClick={addToCart}>Add to cart</button>}
+      {!seller && <button onClick={addToCart}>Add to cart</button>}
     </div>
     </div>
   );

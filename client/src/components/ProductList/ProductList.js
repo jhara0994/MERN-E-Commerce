@@ -50,16 +50,12 @@ function ProductList() {
 
   function filterProducts() {
     if (!currentCategory) {
-      console.log(currentCategory)
+      
       return data.products;
     }
 
     return data.products.filter(
       (product) => product.category === currentCategory,
-      console.log(currentCategory),
-      console.log(data.products[0].category),
-      console.log(data.products[0].title),
-      console.log(data.products)
     );
   }
 
