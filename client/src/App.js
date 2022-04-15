@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import Dashboard from './pages/Dashboard/Dashboard'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetails from './pages/ProductDetails/ProductDetails'
+import Contact from './pages/Contact/Contact'
 
 
 //Must change URI in production
@@ -39,7 +40,12 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <StoreProvider>
-          <Header />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path ='/contact' element={<Contact />} />
+        </Routes>
         </StoreProvider>
       </Router>
     </ApolloProvider>

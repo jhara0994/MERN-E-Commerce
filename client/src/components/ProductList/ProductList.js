@@ -37,7 +37,7 @@ function ProductList() {
     }
 
     return data.products.filter(
-      (product) => product.category === currentCategory,
+      (product) => product.category._id === currentCategory,
     );
   }
 
