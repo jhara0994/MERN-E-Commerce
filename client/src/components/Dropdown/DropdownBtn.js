@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DropdownBtn( props ) {
+export default function DropdownBtn( props ) {
     var content = props.content
     var handleClick = props.onClick
 
@@ -12,3 +12,4 @@ function DropdownBtn( props ) {
         </div>
     )
 }
+
