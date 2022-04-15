@@ -23,7 +23,7 @@ const typeDefs = gql`
       image: String
       price: Int
       sellerId: ID
-      category: ID
+      category: Category
   }
 
   type Order {

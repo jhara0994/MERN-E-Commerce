@@ -1,0 +1,24 @@
+.Order{
+    text-align: center;
+    border: 5px solid black;
+    margin: 5%
+}
+.Order .ItemList li{
+    list-style: none;
+    margin: 15px;
+}
+
+.Order .ItemList{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.Order .ItemsPurchased, .Order .OrderTotal{
+    font-size: 30px;
+}
+
+.Order .PurchaseDate{
+    font-size: 20px;
+}

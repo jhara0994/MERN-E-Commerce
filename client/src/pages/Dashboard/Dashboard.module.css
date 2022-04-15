@@ -1,3 +1,29 @@
 .Dashboard{
     padding-top: 80px;
 }
+
+.SellerDashboard{
+    text-align: center;
+}
+.SellerDashboard .Container, .BuyerDashboard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.SellerDashboard .Container .ProductForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.SellerDashboard .Container .ProductForm *{
+    margin-top: 30px;
+}
+.SellerDashboard .Container .ProductForm button{
+    border-radius: 100px;
+}
+.SellerDashboard .Container .ProductForm label{
+    font-size: 30px;
+}

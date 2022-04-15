@@ -55,9 +55,9 @@ function CategoryMenu() {
           <button>Select a category below:</button>
       {state.categories.map((item) => (
         // {items.filter(item => item.fields.category)}
-          <div className="dropdownContent">
+          <div key={item._id} className="dropdownContent">
             <button
-              key={item._id}
+              
               onClick={() => {
                 handleClick(item._id);
               }}
