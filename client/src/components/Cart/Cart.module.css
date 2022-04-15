@@ -1,0 +1,23 @@
+.Cart, .CartClosed{
+    position: fixed;
+    top: 20%;
+    right: 3%;
+}
+
+.Cart{
+    background-color: var(--tea-green);
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+.CartContent{
+    margin: 15px
+}
+
+.CartContent button{
+    margin-top: 10px
+}
+.CloseCart{
+    position: absolute;
+    right: 1%;
+}

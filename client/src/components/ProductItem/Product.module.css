@@ -1,9 +1,8 @@
 .productCard {
     /* display: inline-block; */
-    margin-left: 50px;
+    margin: 0px 10px 25px 10px;
     padding-right: 5px;
     padding-left: 5px;
-    margin-bottom: 25px;
     padding-bottom: 20px;
     padding-top: 10px;
     border: solid 3px black;

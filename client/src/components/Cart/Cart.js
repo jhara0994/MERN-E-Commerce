@@ -7,8 +7,10 @@ import CartItem from '../CartItem/CartItem';
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
-
+import classes from './Cart.module.css';
+import {FaCartArrowDown, FaWindowClose} from 'react-icons/fa';
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
@@ -63,22 +65,20 @@ const Cart = () => {
 
   if (!state.cartOpen) {
     return (
-      <div className="cart-closed" onClick={toggleCart}>
-        <span role="img" aria-label="trash">
-          🛒
-        </span>
+      <div className={classes.CartClosed} onClick={toggleCart}>
+        <FaCartArrowDown color='black' size='40px' />
       </div>
     );
   }
 
   return (
-    <div className="cart">
-      <div className="close" onClick={toggleCart}>
-        [close]
+    <div className={classes.Cart}>
+      <div >
+      <FaWindowClose size='40px' color='red' className={classes.CloseCart} onClick={toggleCart} />
       </div>
       <h2>Shopping Cart</h2>
       {state.cart.length ? (
-        <div>
+        <div className={classes.CartContent}>
           {state.cart.map((item) => (
             <CartItem key={item._id} item={item} />
           ))}

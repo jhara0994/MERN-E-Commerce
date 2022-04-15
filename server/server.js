@@ -80,7 +80,8 @@ app.post('/api/images/product/:productId', function (req, res) {
         await Product.findByIdAndUpdate(req.params.productId, { image: res.url })
 
       })
-      res.redirect('back');
+     // res.redirect('back');
+     res.status(200).send();
     });
   });
 });

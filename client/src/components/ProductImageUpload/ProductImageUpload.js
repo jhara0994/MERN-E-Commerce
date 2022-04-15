@@ -7,6 +7,7 @@ import { TOGGLE_DISPLAY_PRODUCT_IMAGE_UPLOAD } from '../../utils/actions';
 
 
 const ProductImageUpload = (props) => {
+    console.log(props.productId)
     const [state, dispatch] = useStoreContext();
     const token = Auth.getToken();
 
