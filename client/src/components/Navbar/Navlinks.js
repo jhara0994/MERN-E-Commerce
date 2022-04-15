@@ -21,7 +21,7 @@ const Navlinks = (props) => {
             initial = {from}
             animate = {to}
              onClick={()=>props.mobile && props.closeMenu()}>
-                <a href="#home">Home</a>
+                <p>Home</p>
             </motion.li>
           </Link>
           <Link to='/dashboard'>
@@ -30,7 +30,7 @@ const Navlinks = (props) => {
             animate = {to}
             transition = {{delay: .1}}
             onClick={()=>props.mobile && props.closeMenu()}>
-                <a href="#dashboard">Dashboard</a>
+                <p>Dashboard</p>
             </motion.li>
           </Link>
           <Link to='/contact'>
@@ -39,7 +39,7 @@ const Navlinks = (props) => {
             animate = {to}
             transition = {{delay: .2}}
             onClick={()=>props.mobile && props.closeMenu()}>
-                <a href="#contact">Contact</a>
+                <p>Contact</p>
             </motion.li>
           </Link>
             {Auth.loggedIn() ? (

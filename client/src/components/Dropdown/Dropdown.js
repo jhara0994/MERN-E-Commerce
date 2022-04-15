@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import  DropdownBtn  from './DropdownBtn'
 import classes from './dropdown.module.css'
 import {FaWindowClose} from 'react-icons/fa';
 import {RiMenu5Fill} from 'react-icons/ri';

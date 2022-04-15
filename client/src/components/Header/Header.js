@@ -1,10 +1,5 @@
 import Navbar  from "../Navbar/Navbar.js"
 import css from './Header.module.css'
-import {
-    Routes,
-    Route,
-    Link,
-} from "react-router-dom"
 import Home from '../../pages/Home/Home'
 import Dashboard from '../../pages/Dashboard/Dashboard'
 import Contact from '../../pages/Contact/Contact'
@@ -16,12 +11,7 @@ export default function Header(props) {
         <header>
             <div className="headerInfo">
                 <h1>Art Store</h1>
-                    <Navbar />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path='/dashboard' element={<Dashboard />} />
-                        <Route path ='/contact' element={<Contact />} />
-                    </Routes>
+                <Navbar />
                 <SearchBar />
             </div>
         </header>

@@ -1,9 +1,10 @@
 import React from 'react'
 import { useStoreContext } from '../../utils/GlobalState'
 import { UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 
-export default function DropdownItems() {
+export default function DropdownItems(props) {
     const [state, dispatch] = useStoreContext()
 
     const { categories } = state;
@@ -15,6 +16,7 @@ export default function DropdownItems() {
           type: UPDATE_CURRENT_CATEGORY,
           currentCategory: id,
         });
+        props.closeMenu()
       };
 
     return(

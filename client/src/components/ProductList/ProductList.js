@@ -41,11 +41,13 @@ function ProductList() {
     );
   }
 
+  const filteredProducts = filterProducts()
 
   return (
     <div className={css.product}>
       <h2>Products:</h2>
-      {data.products.length ? (
+      <h2>{ filteredProducts.length ? filteredProducts[0].category.name : "" }</h2>
+      {data.products.length? (
         <div className="flex-row">
           {filterProducts().map((products) => (
             <ProductItem
