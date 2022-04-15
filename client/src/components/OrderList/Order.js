@@ -1,7 +1,7 @@
 import classes from './OrderList.module.css';
-import { useQuery, useLazyQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { QUERY_MULTIPLE_PRODUCTS } from "../../utils/queries";
-
+import { formatTime, total } from '../../utils/helpers';
 
 const Order = (props) =>{
     const {data, loading, error} = useQuery(QUERY_MULTIPLE_PRODUCTS,{variables:{ids: props.products}})
@@ -20,10 +20,12 @@ const Order = (props) =>{
             </div>
         )
     }
-    console.log(data)
+
+    const priceArray = data.multipleProducts.map((product)=> product.price);
+
     return(
         <div className={classes.Order}>
-            <p className ={classes.PurchaseDate}>{props.purchaseDate}</p>
+            <p className ={classes.PurchaseDate}>{formatTime(parseInt(props.purchaseDate))}</p>
             <ul className={classes.ItemList}>
             {data.multipleProducts.map((product)=>{
                 
@@ -37,6 +39,7 @@ const Order = (props) =>{
             }
             )}     
             </ul>
+            <p>Order total: ${total(priceArray)}</p>
 
         </div>
     )

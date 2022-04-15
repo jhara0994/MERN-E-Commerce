@@ -33,7 +33,8 @@ const ProductImageUpload = (props) => {
                 authorization: `Bearer ${token}`
             }
         };
-        fetch(`/api/images/product/${props.productId}`, options)
+        fetch(`/api/images/product/${props.productId}`, options);
+        setImage('');
     }
 
     if(!state.toggleDisplayProductImageUpload){
