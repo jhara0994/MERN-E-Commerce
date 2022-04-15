@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
-import { validateEmail } from '../utils/helpers'
+import { validateEmail } from './../../utils/helpers.js'
+
+import classes from './Contact.module.css'
 
 
 export default function Collab(props) {
@@ -29,12 +31,14 @@ export default function Collab(props) {
     
         // First we check to see if the email is not valid or if the userName is empty. If so we set an error message to be displayed on the page.
         if (!validateEmail(email)) {
-            setErrorMessage('Email is invalid! Please use an valid email so we can collaborate.');
+            //setErrorMessage('Email is invalid! Please use an valid email so we can collaborate.');
+            alert("Email is invalid. Please check the spelling of the email provided.")
             // We want to exit out of this code block if something is wrong so that the user can correct it
+        console.log("I actually did something!!!");
             return;
         }
 
-        alert(`Hello ${email}`);
+        alert(`Your message has been sent. Thank you ${name}.`);
     
         // If everything goes according to plan, we want to clear out the input after a successful registration.
         setName('');
@@ -43,40 +47,40 @@ export default function Collab(props) {
     }
     
         return(
-            <section className="contact" id="contact">
+           <main className='container' >
+                <section className="contact" id="contact">
                 <div className="collab-page">
-                    <h2 className="title">Collaborators Welcome</h2>
+                    <h2 className="title">Contact Us</h2>
                     <p>
-                        As an active programmer, I am always open to new ideas and projects that will fix a real-world issue while also testing and enhancing my knowledge of coding.
-                        Whether you are a programmer as well or a web user that wants to submit an idea or problem that needs a solution, please fill out the form below
-                        and submit it to me. I will reach out to everyone on a first come, first serve basis. I look forward to working with you all. <br></br><b>Happy Coding!</b>
+                       Thank you for visiting our store. To get in contact, please send us a message below, and we will get back to you shortly.
                     </p>
-                    <form className="collab-form">
+                    <form className="collab-form" autoComplete='on'>
                     <input className="name"
                             value={name}
                             name="name"
                             onChange={handleInputChange}
                             type="text"
-                            placeholder="Enter your name: "
+                            placeholder="Name"
                         />
                         <input className="email"
                             value={email}
                             name="email"
                             onChange={handleInputChange}
                             type="text"
-                            placeholder="yourEmail@gmail.com"
+                            placeholder="Email"
                         />
-                        <input className="message"
+                        <textarea rows={5} className="message"
                             value={collabMessage}
                             name="collabMessage"
                             onChange={handleInputChange}
                             type="textarea"
-                            placeholder="Ideas for solving go here!"
+                            placeholder="Message"
                         />
-                        <button type="button" onClick={handleFormSubmit}>Submit</button>
+                        <button type="button" onClick={handleFormSubmit}>Send Message</button>
                     </form> 
                 </div>
-            </section>        
+            </section>      
+           </main>  
         )
 }
 

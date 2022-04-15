@@ -1,11 +1,11 @@
 .searchContainer {
     margin-bottom: auto;
-    margin-top: 20px;
+    top: 10px;
     height: 80px;
     width: 200px;
     z-index: 999;
-    left: 1%;
-    position: fixed;
+    right: 1%;
+    position: absolute;
 }
 
 .searchInput {
@@ -28,4 +28,11 @@
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
+}
+
+@media screen and (max-width: 996px) { 
+    .searchContainer {
+        left: 1%;
+        right: auto;
+    }
 }

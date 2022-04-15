@@ -14,15 +14,11 @@ const OrderList = (props) => {
    }
    if(error){
 
-        return(
-            <h2>
-                Error : {error}
-            </h2>
-        )
+        console.log(error)
    }
 
    
-
+   if(data){
     return(
         <div className={classes.OrderList}>
             {data.order.map((order)=>{
@@ -35,7 +31,14 @@ const OrderList = (props) => {
                 )
             })}
         </div>
-    )
+    )   
+   }
+   return(
+       <div>
+           <h2>You have no orders yet!</h2>
+       </div>
+   )
+    
 
 }
 

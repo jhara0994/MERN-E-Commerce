@@ -3,11 +3,10 @@ import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import { StoreProvider } from './utils/GlobalState';
 import './App.css';
-import Navbar from './components/Navbar/Navbar.js';
 import Home from './pages/Home/Home.js'
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import ImageUpload from './components/ImageUpload/ImageUpload';
+import Dashboard from './pages/Dashboard/Dashboard'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 
@@ -41,6 +40,7 @@ function App() {
       <StoreProvider>
         <Header/>
         <Home />
+        <Dashboard />
         <Footer />
       </StoreProvider>
     </ApolloProvider>
