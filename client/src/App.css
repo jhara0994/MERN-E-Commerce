@@ -63,3 +63,17 @@ main {
     min-height: calc(100vh - 150px);
   }
 }
+
+button {
+  background-color: #614718;
+  outline: white;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  padding: 5px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #c78917;
+}

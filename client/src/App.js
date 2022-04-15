@@ -10,7 +10,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import ImageUpload from './components/ImageUpload/ImageUpload';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import Contact from "./pages/Contact/Contact"
 
 //Must change URI in production
 const httpLink = createHttpLink({
@@ -40,8 +40,7 @@ function App() {
     <ApolloProvider client={client}>
       <Header/>
       <StoreProvider>
-    
-        <Home />
+        <Contact />
         
         <Footer />
       </StoreProvider>

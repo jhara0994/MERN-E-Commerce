@@ -55,3 +55,9 @@ export function idbPromise(storeName, method, object) {
     });
   }
   
+  export function validateEmail(email) {
+    return String(email)
+    .toLowerCase()
+    .match(/^([a-z0-9_.-]+)@([\da-z.-]+).([a-z.]{2,6})$/)
+
+  }
