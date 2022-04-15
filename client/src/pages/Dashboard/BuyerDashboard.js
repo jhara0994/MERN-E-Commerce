@@ -8,7 +8,7 @@ const BuyerDashboard = () => {
     const {data: user} = Auth.getProfile();  
     return (
         <div className={classes.BuyerDashboard}>
-            <h2> Buyer Dashboard</h2>
+            <h1> Buyer Dashboard</h1>
             {Auth.loggedIn()&&<OrderList user={user}/>}
             
 
