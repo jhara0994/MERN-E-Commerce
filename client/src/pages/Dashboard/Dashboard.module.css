@@ -1,5 +1,10 @@
 .Dashboard{
-    padding-top: 80px;
+    padding-top: 160px;
+    
+}
+.Dashboard .Toggler{
+    display: flex;
+    justify-content: space-around;
 }
 
 .SellerDashboard{
@@ -25,5 +30,8 @@
     border-radius: 100px;
 }
 .SellerDashboard .Container .ProductForm label{
+    font-size: 30px;
+}
+.LoginError{
     font-size: 30px;
 }

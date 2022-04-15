@@ -1,7 +1,8 @@
 .Order{
     text-align: center;
     border: 5px solid black;
-    margin: 5%
+    margin: 5%;
+    background-color: var(--tea-green);
 }
 .Order .ItemList li{
     list-style: none;

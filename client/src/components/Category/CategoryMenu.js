@@ -44,7 +44,7 @@ function CategoryMenu() {
   return (
     <div className={classes.categories} id="categories">
       <h2>Categories:</h2>
-      <Dropdown />
+      <Dropdown className={classes.Dropdown} />
     </div>
   );
 }

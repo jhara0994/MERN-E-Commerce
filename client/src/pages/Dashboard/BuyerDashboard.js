@@ -4,17 +4,29 @@ import OrderList from '../../components/OrderList/OrderList';
 ;
 
 const BuyerDashboard = () => {
-    const {data: user} = Auth.getProfile();
-    
-
+    if(Auth.loggedIn()){
+    const {data: user} = Auth.getProfile();  
     return (
         <div className={classes.BuyerDashboard}>
             <h2> Buyer Dashboard</h2>
-            <OrderList user={user}/>
+            {Auth.loggedIn()&&<OrderList user={user}/>}
             
 
         </div>
     )
+    }
+    return(
+        <div className={classes.BuyerDashboard}>
+            <h1> Buyer Dashboard</h1>
+            <p className={classes.LoginError}>Please log in!</p>
+            
+
+        </div>
+
+    )
+    
+
+    
 
 }
 

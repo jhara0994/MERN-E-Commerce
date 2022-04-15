@@ -11,7 +11,7 @@ export default function Dropdown( props ) {
     
 
     return (
-        <div className="dropdownContainer">
+        <div>
             {!expanded && <RiMenu5Fill className={classes.Hamburger} color='black' size='40px'
             onClick={()=>setExpanded(!expanded)} />}
             {expanded && <FaWindowClose className={classes.Hamburger} color='black' size='40px'

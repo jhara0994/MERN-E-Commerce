@@ -8,6 +8,7 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { useLazyQuery } from '@apollo/client';
 import ProductItem from '../ProductItem/ProductItem';
 import { idbPromise } from '../../utils/helpers';
+import { Link } from 'react-router-dom';
 
 function SearchBar() {
     const [state, dispatch] = useStoreContext();
@@ -20,16 +21,15 @@ function SearchBar() {
     const handleFilter = async (e) => {
         const searchTitle = e.target.value
         const  {data}  = await queryProducts()
-        console.log(data)
+        
 
         const productData = data.products
 
         setSearchTerm(searchTitle)
-        console.log(searchTitle)
+        
 
         const newFilter = productData.filter((value) => {
-            console.log(value.title.toLowerCase())
-            console.log(searchTitle.toLowerCase())
+            
             return value.title.toLowerCase().trim().includes(searchTitle.toLowerCase().trim())
         })
 
@@ -51,7 +51,7 @@ function SearchBar() {
                 <input type='text' className={css.searchInput} placeholder="Search products" value={searchTerm} onChange={handleFilter} />
                 <div className="searchIcon">
                     {filteredData.length === 0 ? (
-                        <SearchIcon />
+                        ''
                     ) : (
                         <button id="clear-btn" onClick={clearInput}>Clear</button>
                     )}
@@ -61,9 +61,9 @@ function SearchBar() {
                 <div className={css.dataResult}>
                     {filteredData.slice(0, 15).map((value, key) => {
                         return (
-                            <a className="data-item" href={value.title} target="_blank" rel="noreferrer">
+                            <Link onClick={clearInput} key={key} to={`/product/${value._id}`} >
                                 <p>{value.title}</p>
-                            </a>
+                            </Link>
                         )
                     })}
                 </div>

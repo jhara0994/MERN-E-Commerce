@@ -24,7 +24,7 @@ const resolvers = {
           params._id = id
         }
   
-        return await Product.find(params).populate('category');
+        return await Product.find(params).populate('category').populate('sellerId');
       },
       multipleProducts: async(parent, {ids}) => {
         const products = ids.map(async (id)=>{

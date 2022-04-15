@@ -55,7 +55,7 @@ if(loading){
 
     
     return (
-        <div className={classes.SellerDashboard}>
+        Auth.loggedIn() ? <div className={classes.SellerDashboard}>
             <div className={classes.Container}>
                 <h1> Seller Dashboard </h1>
                 
@@ -77,9 +77,15 @@ if(loading){
                         </form>
                         <ProductImageUpload productId={productId}/>
                 
-                <MyProducts userId={Auth.getProfile().data._id} />
+                {Auth.loggedIn()&& <MyProducts userId={Auth.getProfile().data._id} />}
                 
             </div>
+        </div>: 
+        <div className={classes.SellerDashboard}>
+            <div className={classes.Container}>
+                <h1> Seller Dashboard </h1>
+                <p className={classes.LoginError}>Please log in!</p>
+                </div>
         </div>
     )
 }

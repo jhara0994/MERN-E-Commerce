@@ -23,24 +23,40 @@ query MultipleProducts($ids: [ID]) {
     description
     image
     price
+    sellerId {
+      _id
+      username
+      email
+      password
+      avatarUrl
+      orders
+      catalog
+    }
     category {
       _id
       name
     }
-    sellerId
   }
 }
 `;
 
 export const QUERY_PRODUCTS = gql`
-query GetProducts($category: ID, $title: String, $productsId: ID) {
+query Query($category: ID, $title: String, $productsId: ID) {
   products(category: $category, title: $title, id: $productsId) {
     _id
     title
     description
     image
     price
-    sellerId
+    sellerId {
+      _id
+      username
+      email
+      password
+      avatarUrl
+      orders
+      catalog
+    }
     category {
       _id
       name

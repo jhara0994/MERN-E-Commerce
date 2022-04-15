@@ -10,7 +10,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 import Contact from './pages/Contact/Contact'
-
+import Product from './pages/Product/Product';
 
 //Must change URI in production
 const httpLink = createHttpLink({
@@ -45,6 +45,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path ='/contact' element={<Contact />} />
+          <Route path='/product/:id' element={<Product />} />
         </Routes>
         <Footer />
         </StoreProvider>

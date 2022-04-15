@@ -16,10 +16,13 @@ function ProductItem(item) {
  
   
   let seller = false;
+  if(Auth.loggedIn()){
   const {data: user} = Auth.getProfile();
-  if(user.id === sellerId){
+  if(user._id === sellerId._id){
     seller = true
+  }  
   }
+  
 
   const { cart } = state;
 
@@ -37,19 +40,19 @@ function ProductItem(item) {
   return (
     <div className={css.productCard}>
     <div id="card">
-    {/* <Link to={`/products/${_id}`}> */}
+    <Link className={css.Link} to={`/product/${_id}`}>
       <h3>{title}</h3>
       {image && (
         <img alt={title} src={(image.includes('http') ? image : require(`../../assets/images/${image}`))} />
       )}
       <p>{description}</p>
-      {/* </Link> */}
+      </Link>
       <div>
         <div>{price}</div>
         {category && <div>Category: {category.name}</div>}
-        {sellerId && <div>Seller: {sellerId} </div>}
+        {sellerId && <div>Seller: {sellerId.username} </div>}
       </div>
-      {!seller && <button onClick={addToCart}>Add to cart</button>}
+      {(!seller && Auth.loggedIn())&& <button onClick={addToCart}>Add to cart</button>}
     </div>
     </div>
   );

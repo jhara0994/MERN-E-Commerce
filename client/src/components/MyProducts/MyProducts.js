@@ -36,7 +36,7 @@ function MyProducts(props) {
 
   function filterProducts() {
     return state.products.filter(
-      (product) =>  product.sellerId === props.userId
+      (product) =>  product.sellerId._id === props.userId
     );
   }
 
@@ -55,6 +55,7 @@ function MyProducts(props) {
               description={products.description}
               price={products.price}
               quantity={products.quantity}
+              sellerId={products.sellerId}
             />
           ))}
         </div>

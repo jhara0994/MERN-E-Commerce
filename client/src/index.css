@@ -1,9 +1,9 @@
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
-  --light: #fafafa;
-  --dark: #272f32;
+  --spanish-viridian: #1c7c54ff;
+--medium-aquamarine: #73e2a7ff;
+--tea-green: #def4c6ff;
+--forest-green-traditional: #1b512dff;
+--june-bud: #b1cf5fff;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
@@ -16,6 +16,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--spanish-viridian);
 }
 
 code {

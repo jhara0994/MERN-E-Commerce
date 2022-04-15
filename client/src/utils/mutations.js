@@ -28,15 +28,26 @@ mutation login($email: String!, $password: String!) {
 `;
 
 export const MUTATION_ADD_PRODUCT = gql`
-mutation AddProduct($title: String, $description: String, $price: Int, $category: ID, $image: String, $sellerId: ID) {
-  addProduct(title: $title, description: $description, price: $price, category: $category, image: $image, sellerId: $sellerId) {
+mutation AddProduct($title: String, $description: String, $image: String, $price: Int, $category: ID, $sellerId: ID) {
+  addProduct(title: $title, description: $description, image: $image, price: $price, category: $category, sellerId: $sellerId) {
     _id
     title
     description
     image
     price
-    category
-    sellerId
+    sellerId {
+      _id
+      username
+      email
+      password
+      avatarUrl
+      orders
+      catalog
+    }
+    category {
+      _id
+      name
+    }
   }
 }
 `;

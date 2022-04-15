@@ -22,7 +22,7 @@ const typeDefs = gql`
       description: String
       image: String
       price: Int
-      sellerId: ID
+      sellerId: User
       category: Category
   }
 

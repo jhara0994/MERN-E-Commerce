@@ -1,5 +1,19 @@
 .Hamburger{
-    position: absolute;
-    right: 5%;
+    
     cursor: pointer;
+    margin-bottom: 20px;
 }
+.Container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.DropdownItems{
+    width: 300px;
+}
+
+li{
+    list-style: none;
+}
+
