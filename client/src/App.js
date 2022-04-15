@@ -46,6 +46,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path ='/contact' element={<Contact />} />
         </Routes>
+        <Footer />
         </StoreProvider>
       </Router>
     </ApolloProvider>
