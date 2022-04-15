@@ -6,30 +6,14 @@ import { ADD_TO_CART } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 import css from "./Product.module.css";
 import Auth from "../../utils/auth";
-import { QUERY_USER } from "../../utils/queries";
-import { useLazyQuery } from "@apollo/client";
 
 
 function ProductItem(item) {
   const { image, title, description, _id, price, category, sellerId } = item;
   const [state, dispatch] = useStoreContext();
-  const [getSeller] = useLazyQuery(QUERY_USER)
-  // let data = {};
-  // if(sellerId){
-  // const {data: queryData,loading,error} = getSeller({variables:{id: sellerId}});
-
-  // if(loading){
-  //   return(
-  //     <div>
-  //       Loading...
-  //     </div>
-  //   )
-  // }
-  // if(error){
-  //   console.log(error)
-  // }
-  // data = queryData
-  // }
+  
+  
+ 
   
   let seller = false;
   const {data: user} = Auth.getProfile();
@@ -63,7 +47,7 @@ function ProductItem(item) {
       <div>
         <div>{price}</div>
         {category && <div>Category: {category.name}</div>}
-        {sellerId && <div>Seller </div>}
+        {sellerId && <div>Seller: {sellerId} </div>}
       </div>
       {!seller && <button onClick={addToCart}>Add to cart</button>}
     </div>
