@@ -15,7 +15,9 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
-
+  const {data: profileData} = Auth.getProfile();
+  const buyerId = profileData._id
+  console.log(buyerId)
   useEffect(() => {
     if (data) {
       stripePromise.then((res) => {
@@ -37,7 +39,7 @@ const Cart = () => {
 
   function toggleCart() {
     dispatch({ type: TOGGLE_CART });
-    console.log(state)
+
   }
 
   function calculateTotal() {
@@ -58,9 +60,10 @@ const Cart = () => {
     });
 
     getCheckout({
-      variables: { products: productIds },
+      variables: { products: productIds, buyerId: buyerId },
     });
   }
+  
   
 
   if (!state.cartOpen) {

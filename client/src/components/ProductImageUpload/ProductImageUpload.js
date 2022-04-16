@@ -30,6 +30,7 @@ const ProductImageUpload = (props) => {
         const options = {
             method: 'POST',
             body: formData,
+            enctype: 'multipart/form-data',
             headers: {
                 authorization: `Bearer ${token}`
             }

@@ -45,13 +45,13 @@ const resolvers = {
         }
       } ,
       order: async (parent, { userId }, context) => {
-        if (context.user) {
-          const user = await User.findById(context.user._id).populate('orders');
+        // if (context.user) {
+        //   const user = await User.findById(context.user._id).populate('orders');
           
   
-          return user.orders;
-        }
-          else if (userId){
+        //   return user.orders;
+        // }
+          if (userId){
             const user = await User.findById(userId).populate('orders');
             //console.log(user)
             return user.orders;
@@ -62,10 +62,15 @@ const resolvers = {
       checkout: async (parent, args, context) => {
         
         const url = new URL(context.headers.referer).origin;
+       
+        const order = await Order.create({ products: args.products, buyerId: args.buyerId });
+        console.log(order)
+          const userUpdate = await User.findByIdAndUpdate(args.buyerId, {$addToSet:{orders: order._id}},{new: true})
         
-        const order = new Order({ products: args.products });
+        
+        
         const line_items = [];
-  
+        console.log(userUpdate)
         const { products } = await order.populate('products');
 
         for (let i = 0; i < products.length; i++) {
@@ -100,6 +105,12 @@ const resolvers = {
         });
   
         return { session: session.id };
+      },
+      customer: async (parent, {sessionId}, context) => {
+        const session = await stripe.checkout.sessions.retrieve(sessionId);
+        const customer = await stripe.customers.retrieve(session.customer);
+        return (customer.name)
+       
       }
     },
     Mutation: {
