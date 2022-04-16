@@ -43,3 +43,7 @@
 .LoginError{
     font-size: 30px;
 }
+
+.BuyerDashboard h1, .BuyerDashboard .LoginError, .SellerDashboard h1, .SellerDashboard .LoginError{
+    color: black;
+}

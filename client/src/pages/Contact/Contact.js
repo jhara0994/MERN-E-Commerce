@@ -47,7 +47,7 @@ export default function Collab(props) {
     }
     
         return(
-           <main className='container' >
+           <main className={classes.Container} >
                 <section className="contact" id="contact">
                 <div className="collab-page">
                     <h2 className="title">Contact Us</h2>

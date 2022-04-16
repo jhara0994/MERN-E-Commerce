@@ -14,3 +14,10 @@ form {
 h2 {
     text-align: center;
 }
+
+.Container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
