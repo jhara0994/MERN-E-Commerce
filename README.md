@@ -13,7 +13,7 @@
 
 ## Deployed-Link
 ### https://art-e-commerce-892.herokuapp.com/
-<img width="1423" alt="Art-E-Com" src="https://user-images.githubusercontent.com/92455472/163678700-84f5ec18-b679-4829-9166-d194f5eae62c.png">
+<img width="1423" alt="E-Com" src="https://user-images.githubusercontent.com/92455472/163681498-d0cc91fb-ae0b-4a22-b73a-24c200cc81bb.png">
 
 ## Description:
 ### This is a full stack appplication using MERN and Context API to produce a store you can shop through and dashboards for the buyer and the seller.
