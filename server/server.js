@@ -66,8 +66,8 @@ app.post('/api/images/product/:productId', function (req, res) {
   var fstream;
 
   req.pipe(req.busboy);
-  req.busboy.on('file', async function (fieldname, file, filename) {
-    console.log("Uploading photo");
+  req.busboy.on('file', async function (fieldname, file, {filename}) {
+    console.log(`Uploading photo: ${filename} `);
     try {
      fstream = fs.createWriteStream(__dirname + '/images/' + filename);
     file.pipe(fstream);
