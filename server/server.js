@@ -8,10 +8,11 @@ var fs = require('fs');
 var busboy = require('connect-busboy');
 const { User, Product } = require('./models');
 const Auth = require('./utils/auth.js');
-const { restart } = require('nodemon');
+const cloudinary = require('cloudinary').v2
+const streamifier = require('streamifier')
+const multer = require('multer')
+const fileUpload = multer();
 
-
-const cloudinary = require('cloudinary').v2;
 console.log(cloudinary.config().cloud_name);
 
 
@@ -60,6 +61,31 @@ app.post('/api/images/user', function (req, res) {
       res.redirect('back');
     });
   });
+});
+
+app.post('/upload/:ProductId', fileUpload.single('image'), function (req, res, next) {
+  let streamUpload = (req) => {
+      return new Promise((resolve, reject) => {
+          let stream = cloudinary.uploader.upload_stream(
+            (error, result) => {
+              if (result) {
+                resolve(result);
+              } else {
+                reject(error);
+              }
+            }
+          );
+
+        streamifier.createReadStream(req.file.buffer).pipe(stream);
+      });
+  };
+
+  async function upload(req) {
+      let result = await streamUpload(req);
+      console.log(result);
+  }
+
+  upload(req);
 });
 
 app.post('/api/images/product/:productId', function (req, res) {
