@@ -46,11 +46,11 @@ app.post('/api/images/user', function (req, res) {
   req.busboy.on('file', function (fieldname, file, filename) {
     console.log("Uploading photo");
 
-    fstream = fs.createWriteStream(path.join(process.env.PWD + '/images/' + filename));
+    fstream = fs.createWriteStream(path.join(__dirname + '/images/' + filename));
     file.pipe(fstream);
     fstream.on('close', function () {
-      cloudinary.uploader.upload(path.join(process.env.PWD + '/images/' + filename)).then(async (res) => {
-        fs.unlink(path.join(process.env.PWD + '/images/' + filename), (err) => {
+      cloudinary.uploader.upload(path.join(__dirname + '/images/' + filename)).then(async (res) => {
+        fs.unlink(path.join(__dirname + '/images/' + filename), (err) => {
           if (err) throw err;
         })
 
