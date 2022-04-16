@@ -98,10 +98,20 @@ app.post('/api/images/product/:productId', function (req, res) {
      fstream = fs.createWriteStream(__dirname + '/images/' + filename);
     file.pipe(fstream);
     fstream.on('close', function () {
-      cloudinary.uploader.upload(__dirname + '/images/' + filename).then(async (res) => {
-        fs.unlink(__dirname + '/images/' + filename, (err) => {
+      cloudinary.uploader.upload(__dirname + '/images/' + filename, {},(err, res) => {
+        if(err){
+          console.log(err)
+        }
+        console.log(res)
+      }).then(async (res) => {
+        try {
+         fs.unlink(__dirname + '/images/' + filename, (err) => {
           if (err) throw err;
-        })
+        }) 
+        } catch (err) {
+          console.log(err)
+        }
+        
 
 
         await Product.findByIdAndUpdate(req.params.productId, { image: res.url })
