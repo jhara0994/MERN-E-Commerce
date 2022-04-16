@@ -1,4 +1,16 @@
 .Success{
-    padding-top: 100px;
-    text-align: center;
+   text-align: center;
+   margin-top: 300px;
+   color: black;
+}
+
+.Home{
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+}
+
+.Home:hover{
+    cursor: pointer;
+    color: green;
 }

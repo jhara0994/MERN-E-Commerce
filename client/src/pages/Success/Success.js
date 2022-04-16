@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import classes from './Success.module.css';
 import { useQuery } from "@apollo/client";
 import { QUERY_GET_CUSTOMER } from "../../utils/queries";
@@ -20,6 +20,7 @@ const Success = () =>{
     return(
         <div className={classes.Success}>
             <h1>Thank you for your order, {data.customer}</h1>
+            <Link className={classes.Home} to='/' > Go Back Home </Link>
         </div>
     )
 };

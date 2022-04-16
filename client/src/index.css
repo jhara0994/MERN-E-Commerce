@@ -1,22 +1,27 @@
 :root {
-  --spanish-viridian: #1c7c54ff;
+  --spanish-viridian: #cfe8ef;
 --medium-aquamarine: #73e2a7ff;
---tea-green: #def4c6ff;
+--tea-green: #133c55;
 --forest-green-traditional: #1b512dff;
 --june-bud: #b1cf5fff;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
+  font-family: 'Montserrat',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Montserrat',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--spanish-viridian);
+  background: rgb(145,229,246);
+  background: radial-gradient(circle, rgba(145,229,246,1) 24%, rgba(56,111,164,1) 100%); 
+  color: white;
 }
 
 code {
