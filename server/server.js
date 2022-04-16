@@ -7,7 +7,8 @@ const db = require('./config/connection');
 var fs = require('fs');
 var busboy = require('connect-busboy');
 const { User, Product } = require('./models');
-const Auth = require('./utils/auth.js')
+const Auth = require('./utils/auth.js');
+const { restart } = require('nodemon');
 
 
 const cloudinary = require('cloudinary').v2;
@@ -65,10 +66,10 @@ app.post('/api/images/product/:productId', function (req, res) {
   var fstream;
 
   req.pipe(req.busboy);
-  req.busboy.on('file', function (fieldname, file, filename) {
+  req.busboy.on('file', async function (fieldname, file, filename) {
     console.log("Uploading photo");
-
-    fstream = fs.createWriteStream(__dirname + '/images/' + filename);
+    try {
+     fstream = fs.createWriteStream(__dirname + '/images/' + filename);
     file.pipe(fstream);
     fstream.on('close', function () {
       cloudinary.uploader.upload(__dirname + '/images/' + filename).then(async (res) => {
@@ -82,7 +83,12 @@ app.post('/api/images/product/:productId', function (req, res) {
       })
      // res.redirect('back');
      res.status(200).send();
-    });
+    }); 
+    } catch (err) {
+      console.log(err)
+      return res.status(500)
+    }
+    
   });
 });
 
