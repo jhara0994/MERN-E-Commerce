@@ -19,6 +19,7 @@ const OrderList = (props) => {
 
    
    if(data){
+       console.log(data)
     return(
         <div className={classes.OrderList}>
             {data.order.map((order)=>{

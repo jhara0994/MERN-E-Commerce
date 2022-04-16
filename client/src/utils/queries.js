@@ -65,8 +65,8 @@ query Query($category: ID, $title: String, $productsId: ID) {
 }`;
 
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
+  query getCheckout($products: [ID]!, $buyerId: ID) {
+    checkout(products: $products, buyerId: $buyerId) {
       session
     }
   }
@@ -118,5 +118,11 @@ query GetOrders($userId: ID!) {
     sellerId
     buyerId
   }
+}
+`;
+
+export const QUERY_GET_CUSTOMER = gql`
+query getCustomer($sessionId: String) {
+  customer(sessionId: $sessionId)
 }
 `;

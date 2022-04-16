@@ -15,8 +15,7 @@ const orderSchema = new Schema({
   ],
   sellerId: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
+    ref: 'User'
   },
   buyerId: {
     type: Schema.Types.ObjectId,
